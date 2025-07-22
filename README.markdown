@@ -7,7 +7,7 @@ Welcome to the official website for Anandotsab '25, the 9th year of Bellandur’
 - Gradient backgrounds and lively animations across the page
 - Reddish footer with mustard text
 - Mobile-friendly layout with hamburger menu and responsive grids
-- Larger and prominent GGLCA logo (`gglca-logo.png`) in top-left navbar (`w-16 h-16` on mobile, `w-24 h-24` on desktop)
+- Text "Anandotsab '25" replaces GGLCA logo in navbar due to visibility issues
 - Enhanced "Why Sponsor?" section with PDF-based text and additional content
 - "Our Achievements" section with content from PDF pages 3, 4, and 5, including uncropped images (`whoarewe.jpg`, `demographics.jpg`, `peopleawards.jpg`) beside text
 - Smaller sponsor logos (`h-12` on mobile, `h-16` on desktop) without borders, with bounce animation
@@ -18,7 +18,7 @@ Welcome to the official website for Anandotsab '25, the 9th year of Bellandur’
 - Social media links (Facebook, Twitter, Instagram, Email)
 - Placeholder for posting to the GGLCA Facebook page (requires server-side integration)
 - Responsive design using Tailwind CSS
-- Adjusted hero section banner to be smaller and 60% transparent for full hero image visibility
+- Adjusted hero section banner to be smaller, 60% transparent, and moved downward for full hero image visibility
 
 ## Setup Instructions
 
@@ -57,7 +57,7 @@ Replace the following images in the `images/` folder:
 - `gallery3.jpg`: Theme-Based Celebration 2024
 - `gallery4.jpg`: Pandal Decoration 2024
 - `contact-bg.jpg`: Social media or Durga Puja-themed (unused as background)
-- `gglca-logo.png`: GGLCA logo (larger and prominent)
+- `gglca-logo.png`: GGLCA logo (larger and prominent, now replaced with text)
 - `whoarewe.jpg`: GGLCA team or event setup (PDF page 3, uncropped)
 - `peopleawards.jpg`: Award ceremony or trophy (PDF page 5, uncropped)
 - `demographics.jpg`: Audience chart or crowd photo (PDF page 4, uncropped)
@@ -81,8 +81,8 @@ Replace the following images in the `images/` folder:
   - `whoarewe.jpg`: GGLCA team or event setup (PDF page 3).
   - `peopleawards.jpg`: Award ceremony or trophy (PDF page 5).
   - `demographics.jpg`: Audience chart or crowd photo (PDF page 4).
-  - `gglca-logo.png`: High-resolution version for larger display.
   - `hero-bg.jpg`: High-resolution festive image to complement the transparent banner.
+- **Logo Replacement**: The GGLCA logo (`gglca-logo.png`) is replaced with "Anandotsab '25" text due to visibility issues. If a VGA logo is desired, provide the image file to replace the text.
 - **Facebook Posting**: Requires server-side integration with the Facebook Graph API for actual posting.
 - **Contact**: For sponsorship inquiries, reach out to info@gglca.com or +91 9513333850.
 
