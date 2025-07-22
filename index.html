@@ -50,24 +50,29 @@
 </head>
 <body class="text-gray-900 bg-gradient-to-br from-yellow-50 to-orange-50">
     <!-- Navbar -->
-    <nav class="bg-red-700 text-yellow-300 py-1 sticky top-0 z-50 shadow-lg">
-        <div class="max-w-xs md:max-w-sm mx-auto flex justify-between items-center px-2"></div>
-            <a href="#home" class="font-philosopher text-lg md:text-2xl font-bold text-yellow-300">
-                Anandotsab '25 - Bellandur Durga Puja
-            </a>
+    <nav class="bg-red-700 text-yellow-300 py-4 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="#home"><img src="images/gglca-logo.png" alt="GGLCA Logo" class="w-16 h-16 md:w-24 md:h-24 object-contain"></a>
             <button id="hamburger" class="md:hidden focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <ul id="nav-menu" class="hidden md:flex md:space-x-6">
+                <li><a href="#home" class="hover:text-yellow-200">Home</a></li>
+                <li><a href="#about" class="hover:text-yellow-200">About</a></li>
+                <li><a href="#sponsorship" class="hover:text-yellow-200">Sponsorship</a></li>
+                <li><a href="#gallery" class="hover:text-yellow-200">Gallery</a></li>
+                <li><a href="#location" class="hover:text-yellow-200">Location</a></li>
+                <li><a href="#contact" class="hover:text-yellow-200">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-bg h-screen flex items-center justify-center text-center text-white animate-fade-in relative">
-        <!-- Background image stays at full size via h-screen and hero-bg -->
-        <div class="bg-gradient-to-br from-red-700 to-yellow-400 bg-opacity-60 p-2 md:p-3 rounded-lg max-w-xs md:max-w-sm section-border absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-6">
-                <!-- <h2 class="text-lg md:text-2xl font-bold font-philosopher mb-0 md:mb-0 md:mr-4 flex-1 text-left">Anandotsab '25 - Bellandur Durga Puja</h2>
-                <p class="text-sm md:text-base mb-0 md:mb-0 flex-1 text-left">Join us for the 9th year of vibrant celebrations at Sobha Lakeview Clubhouse, Bangalore, from October 8–12, 2025!</p> -->
-                <a href="#sponsorship" class="bg-yellow-300 text-gray-900 px-6 md:px-10 py-3 md:py-4 rounded-full font-semibold hover:bg-yellow-200 animate-pulse text-base md:text-xl whitespace-nowrap">Become a Sponsor</a>
-            </div>
+    <section id="home" class="hero-bg h-screen flex items-center justify-center text-center text-white animate-fade-in">
+        <div class="bg-gradient-to-br from-red-700 to-yellow-400 bg-opacity-60 p-4 md:p-6 rounded-lg max-w-md md:max-w-xl section-border">
+            <h1 class="text-2xl md:text-4xl font-bold font-philosopher mb-3">Anandotsab '25 - Bellandur Durga Puja</h1>
+            <p class="text-base md:text-lg mb-4">Join us for the 9th year of vibrant celebrations at Sobha Lakeview Clubhouse, Bangalore, from October 8–12, 2025!</p>
+            <a href="#sponsorship" class="bg-yellow-300 text-gray-900 px-3 md:px-5 py-1 md:py-2 rounded-full font-semibold hover:bg-yellow-200 animate-pulse">Become a Sponsor</a>
         </div>
         <!-- Placeholder: Replace 'images/hero-bg.jpg' with a festive Durga Puja image (e.g., Maa Durga idol) -->
     </section>

@@ -1,0 +1,89 @@
+# Anandotsab '25 - Bellandur Durga Puja
+
+Welcome to the official website for Anandotsab '25, the 9th year of Bellandur’s vibrant Durga Puja celebration, organized by the Green Glen Layout Cultural Association (GGLCA). This website showcases the event’s cultural extravaganza, sponsorship opportunities, and a rich, festive design.
+
+## Features
+- Super vibrant theme with bright sindoor red (#dc2626) and mustard yellow (#facc15) color scheme
+- Gradient backgrounds and lively animations across the page
+- Reddish footer with mustard text
+- Mobile-friendly layout with hamburger menu and responsive grids
+- Larger and prominent GGLCA logo (`gglca-logo.png`) in top-left navbar (`w-16 h-16` on mobile, `w-24 h-24` on desktop)
+- Enhanced "Why Sponsor?" section with PDF-based text and additional content
+- "Our Achievements" section with content from PDF pages 3, 4, and 5, including uncropped images (`whoarewe.jpg`, `demographics.jpg`, `peopleawards.jpg`) beside text
+- Smaller sponsor logos (`h-12` on mobile, `h-16` on desktop) without borders, with bounce animation
+- Contact section with white background, larger SVG social media/email icons in original brand colors, and readable text
+- Larger `sponsor1.jpg` image and four YouTube video embeds in the gallery section
+- 26 image placeholders for a vibrant, image-rich look
+- Google Maps integration for Sobha Lakeview Clubhouse
+- Social media links (Facebook, Twitter, Instagram, Email)
+- Placeholder for posting to the GGLCA Facebook page (requires server-side integration)
+- Responsive design using Tailwind CSS
+- Adjusted hero section banner to be smaller and 60% transparent for full hero image visibility
+
+## Setup Instructions
+
+### Local Testing
+1. **Install Node.js**: Ensure Node.js is installed (https://nodejs.org).
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+3. **Run Local Server**:
+   ```bash
+   npm start
+   ```
+4. Open `http://localhost:8080` in your browser.
+5. Replace placeholder images in the `images/` folder with actual event images and sponsor logos.
+
+### GitHub Pages Deployment
+1. Push the repository to GitHub:
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   git push origin main
+   ```
+2. Enable GitHub Pages in the repository settings under `Pages`, selecting the `main` branch.
+3. Access the site at `https://<your-username>.github.io/anandotsab-25`.
+
+## Image Placeholders
+Replace the following images in the `images/` folder:
+- `hero-bg.jpg`: Festive Durga Puja hero image (e.g., Maa Durga idol)
+- `about1.jpg`: Cultural event image
+- `about2.jpg`: Community bonding image
+- `sponsor1.jpg`: Event banner with sponsor logos (larger)
+- `sponsor2.jpg`: Stage branding
+- `gallery1.jpg`: Cultural Extravaganza 2024
+- `gallery2.jpg`: Massive Footfall 2024
+- `gallery3.jpg`: Theme-Based Celebration 2024
+- `gallery4.jpg`: Pandal Decoration 2024
+- `contact-bg.jpg`: Social media or Durga Puja-themed (unused as background)
+- `gglca-logo.png`: GGLCA logo (larger and prominent)
+- `whoarewe.jpg`: GGLCA team or event setup (PDF page 3, uncropped)
+- `peopleawards.jpg`: Award ceremony or trophy (PDF page 5, uncropped)
+- `demographics.jpg`: Audience chart or crowd photo (PDF page 4, uncropped)
+- `people1.jpg`: GGLCA Member Placeholder 1
+- `people2.jpg`: GGLCA Member Placeholder 2
+- `people3.jpg`: GGLCA Member Placeholder 3
+- `people4.jpg`: GGLCA Member Placeholder 4
+- `sponsor-deutsche.jpg`: Deutsche Motoren logo
+- `sponsor-enamor.jpg`: Enamor logo
+- `sponsor-pchandra.jpg`: P. Chandra logo
+- `sponsor-royal.jpg`: Royal logo
+- `sponsor-ranthambore.jpg`: Ranthambore logo
+- `sponsor-idfc.jpg`: IDFC First Bank logo
+- `sponsor-ion.jpg`: Ion Exchange logo
+- `sponsor-radio.jpg`: Radio logo
+- `sponsor-gport.jpg`: G. Port logo
+- `sponsor-portico.jpg`: Portico Properties logo
+
+## Notes
+- **Image Replacement**: Ensure all images are uncropped and vibrant. Suggested replacements:
+  - `whoarewe.jpg`: GGLCA team or event setup (PDF page 3).
+  - `peopleawards.jpg`: Award ceremony or trophy (PDF page 5).
+  - `demographics.jpg`: Audience chart or crowd photo (PDF page 4).
+  - `gglca-logo.png`: High-resolution version for larger display.
+  - `hero-bg.jpg`: High-resolution festive image to complement the transparent banner.
+- **Facebook Posting**: Requires server-side integration with the Facebook Graph API for actual posting.
+- **Contact**: For sponsorship inquiries, reach out to info@gglca.com or +91 9513333850.
+
+© 2025 Green Glen Layout Cultural Association
