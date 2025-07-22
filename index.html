@@ -1,0 +1,325 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anandotsab '25 - Bellandur Durga Puja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Philosopher:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <meta name="description" content="Anandotsab '25 - Bellandur Durga Puja, a vibrant 5-day celebration in Bangalore. Join us at Sobha Lakeview Clubhouse for cultural events, food, and more!">
+</head>
+<body class="text-gray-900 bg-gradient-to-br from-yellow-50 to-orange-50">
+    <!-- Navbar -->
+    <nav class="bg-red-700 text-yellow-300 py-1 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-xs md:max-w-sm mx-auto flex justify-between items-center px-2"></div>
+            <a href="#home" class="font-philosopher text-lg md:text-2xl font-bold text-yellow-300">
+                Anandotsab '25 - Bellandur Durga Puja
+            </a>
+            <button id="hamburger" class="md:hidden focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg h-screen flex items-center justify-center text-center text-white animate-fade-in relative">
+        <!-- Background image stays at full size via h-screen and hero-bg -->
+        <div class="bg-gradient-to-br from-red-700 to-yellow-400 bg-opacity-60 p-2 md:p-3 rounded-lg max-w-xs md:max-w-sm section-border absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-6">
+                <!-- <h2 class="text-lg md:text-2xl font-bold font-philosopher mb-0 md:mb-0 md:mr-4 flex-1 text-left">Anandotsab '25 - Bellandur Durga Puja</h2>
+                <p class="text-sm md:text-base mb-0 md:mb-0 flex-1 text-left">Join us for the 9th year of vibrant celebrations at Sobha Lakeview Clubhouse, Bangalore, from October 8–12, 2025!</p> -->
+                <a href="#sponsorship" class="bg-yellow-300 text-gray-900 px-6 md:px-10 py-3 md:py-4 rounded-full font-semibold hover:bg-yellow-200 animate-pulse text-base md:text-xl whitespace-nowrap">Become a Sponsor</a>
+            </div>
+        </div>
+        <!-- Placeholder: Replace 'images/hero-bg.jpg' with a festive Durga Puja image (e.g., Maa Durga idol) -->
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 md:py-16 bg-gradient-to-br from-white to-orange-100 animate-fade-in">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-red-700 font-philosopher">About Anandotsab '25</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <div>
+                    <p class="text-base md:text-lg mb-4 text-gray-900">Join us for the 9th year of celebrating the grandeur of Durga Puja in Bellandur, Bangalore, organized by the Green Glen Layout Cultural Association (GGLCA), an initiative by Prachesha Socio Cultural Trust. This 5-day extravaganza, held at Sobha Lakeview Clubhouse, recreates the magic of Kolkata’s Durga Puja with electrifying cultural programs, gastronomic delights, and community bonding.</p>
+                    <p class="text-base md:text-lg mb-4 text-gray-900">Anandotsab attracts over 30,000 unique visitors from 50+ apartment complexes, offering a culturally diverse and inclusive celebration. Featuring music, dance, drama, drawings, and endless food options, it’s more than a festival—it’s a link to our roots.</p>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <img src="images/about1.jpg" alt="Cultural Event at Anandotsab" class="w-full h-auto object-contain rounded-lg shadow-md sindoor-border">
+                    <img src="images/about2.jpg" alt="Community Bonding at Anandotsab" class="w-full h-auto object-contain rounded-lg shadow-md sindoor-border">
+                </div>
+            </div>
+            <div class="mt-8 md:mt-12">
+                <h3 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8 text-red-700 font-philosopher">Our Achievements</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                    <div class="bg-red-100 p-4 md:p-6 rounded-lg shadow-lg text-center achievement-card">
+                        <svg class="w-10 h-10 md:w-12 md:h-12 mx-auto text-yellow-300 mb-4 animate-pulse" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <h4 class="text-lg md:text-xl font-semibold text-red-700">Who Are We</h4>
+                        <p class="text-sm md:text-base mt-2 text-gray-900">The Green Glen Layout Cultural Association (GGLCA), under Prachesha Socio Cultural Trust, is a cornerstone of cultural unity in Bangalore. Since its founding, GGLCA has been dedicated to preserving Bengali traditions while fostering community spirit through vibrant festivals like Anandotsab. Our team of passionate organizers and volunteers works tirelessly to create an inclusive, memorable experience that celebrates heritage and brings people together.</p>
+                        <img src="images/whoarewe.jpg" alt="GGLCA Team or Event Setup" class="w-full h-auto object-contain rounded-lg mt-4 shadow-md">
+                    </div>
+                    <div class="bg-red-100 p-4 md:p-6 rounded-lg shadow-lg text-center achievement-card">
+                        <svg class="w-10 h-10 md:w-12 md:h-12 mx-auto text-yellow-300 mb-4 animate-pulse" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                        <h4 class="text-lg md:text-xl font-semibold text-red-700">Demographics</h4>
+                        <p class="text-sm md:text-base mt-2 text-gray-900">Anandotsab attracts a diverse audience of over 30,000 unique visitors from Bellandur and surrounding areas, with 60% aged 25–45, including professionals, families, and students. This demographic, residing in over 50 apartment complexes, boasts high purchasing power and a deep appreciation for cultural events. Located in Bangalore’s IT hub, our festival offers brands a unique opportunity to engage with a vibrant, culturally inclined community seeking authentic experiences.</p>
+                        <img src="images/demographics.jpg" alt="Audience Chart or Crowd Photo" class="w-full h-auto object-contain rounded-lg mt-4 shadow-md">
+                    </div>
+                    <div class="bg-red-100 p-4 md:p-6 rounded-lg shadow-lg text-center achievement-card">
+                        <svg class="w-10 h-10 md:w-12 md:h-12 mx-auto text-yellow-300 mb-4 animate-pulse" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <h4 class="text-lg md:text-xl font-semibold text-red-700">2024 Accolades</h4>
+                        <p class="text-sm md:text-base mt-2 text-gray-900">Anandotsab 2024 was a landmark year, earning over 20 prestigious awards for cultural excellence, innovative pandal designs, and exceptional community engagement. Our dedicated team of organizers and volunteers received accolades from local cultural bodies and media outlets for their creativity, inclusivity, and flawless execution. These awards highlight our commitment to delivering a world-class Durga Puja experience that resonates with attendees and sets a benchmark for cultural festivals in Bangalore.</p>
+                        <img src="images/peopleawards.jpg" alt="Award Ceremony or Trophy" class="w-full h-auto object-contain rounded-lg mt-4 shadow-md">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsorship Section -->
+    <section id="sponsorship" class="py-12 md:py-16 bg-gradient-to-br from-red-50 to-yellow-100 animate-fade-in">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-red-700 font-philosopher">Sponsorship Opportunities</h2>
+            <p class="text-base md:text-lg text-center mb-6 md:mb-8 text-gray-900">Partner with Anandotsab '25 to showcase your brand to over 30,000 visitors and gain unparalleled visibility!</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-6 md:mb-8">
+                <div class="grid grid-cols-1 gap-4">
+                    <img src="images/sponsor1.jpg" alt="Event Banner with Sponsor Logos" class="w-full h-auto object-contain rounded-lg shadow-md sindoor-border">
+                    <img src="images/sponsor2.jpg" alt="Stage Branding at Anandotsab" class="w-full h-auto object-contain rounded-lg shadow-md sindoor-border">
+                </div>
+                <div class="section-border">
+                    <h3 class="text-xl md:text-2xl font-semibold text-red-700 mb-4">Why Sponsor?</h3>
+                    <p class="text-base md:text-lg mb-4 text-gray-900">Anandotsab '25 offers a unique platform to elevate your brand’s visibility among a diverse, engaged audience of over 30,000 attendees from Bellandur and beyond. With prominent placements on LED displays, banners, and social media campaigns, your brand will shine across our vibrant 5-day festival. Sponsorship includes exclusive stalls, stage promotions, and year-long digital marketing, ensuring maximum ROI. Join us to connect with a culturally rich community, foster goodwill, and align with a celebration that blends tradition with modern appeal.</p>
+                </div>
+            </div>
+            <div class="mb-8 md:mb-12">
+                <h3 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8 text-red-700 font-philosopher">Our Past Sponsors</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sponsor-banner">
+                    <img src="images/sponsor-deutsche.jpg" alt="Deutsche Motoren" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
+                    <img src="images/sponsor-enamor.jpg" alt="Enamor" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
+                    <img src="images/sponsor-pchandra.jpg" alt="P. Chandra" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
+                    <img src="images/sponsor-royal.jpg" alt="Royal" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
+                    <img src="images/sponsor-ranthambore.jpg" alt="Ranthambore" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
+                    <img src="images/sponsor-idfc.jpg" alt="IDFC First Bank" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
+                    <img src="images/sponsor-ion.jpg" alt="Ion Exchange" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
+                    <img src="images/sponsor-radio.jpg" alt="Radio" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
+                    <img src="images/sponsor-gport.jpg" alt="G. Port" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
+                    <img src="images/sponsor-portico.jpg" alt="Portico Properties" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+                <div class="bg-white p-4 md:p-6 rounded-lg shadow-lg border-t-4 border-yellow-300">
+                    <h3 class="text-xl md:text-2xl font-semibold text-red-700 mb-4">Prime Partner</h3>
+                    <ul class="list-disc pl-5 text-xs md:text-sm text-gray-900">
+                        <li>Main Entrance - 2 Lighted Columns + Glow Board on Top</li>
+                        <li>Cultural Stage Backdrop LED Display</li>
+                        <li>Cultural Stage Side-wing LED Display</li>
+                        <li>Food Stall Area LED Display</li>
+                        <li>Stage Space for Product Promotion (15 min)</li>
+                        <li>Two 6' x 4' Banners & 6' x 2' Standee</li>
+                        <li>Digital Marketing via Social Media (1 year)</li>
+                        <li>Logo in Theme Song Video and Mahisasur Mardini Opera</li>
+                        <li>Souvenir Centre-spread Ad (2 x A4)</li>
+                        <li>Ad in Web Magazine Udbhas (twice a year)</li>
+                        <li>One 10' x 10' Corporate Stall</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-lg shadow-lg border-t-4 border-yellow-300">
+                    <h3 class="text-xl md:text-2xl font-semibold text-red-700 mb-4">Platinum Partner</h3>
+                    <ul class="list-disc pl-5 text-xs md:text-sm text-gray-900">
+                        <li>2 Lighted Columns in Approach Road</li>
+                        <li>Cultural Stage Backdrop LED Display</li>
+                        <li>Cultural Stage Side-wing LED Display</li>
+                        <li>Lighted Glow Board atop Puja Stage</li>
+                        <li>Food Stall Area LED Display</li>
+                        <li>Stage Space for Product Promotion (10 min)</li>
+                        <li>One 6' x 4' Banner & 6' x 2' Standee</li>
+                        <li>Digital Marketing via Social Media (1 year)</li>
+                        <li>Logo in Mahisasur Mardini Opera</li>
+                        <li>Full Page Souvenir Ad (1 x A4)</li>
+                        <li>Ad in Web Magazine Udbhas (twice a year)</li>
+                        <li>One 10' x 10' Corporate Stall</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-lg shadow-lg border-t-4 border-yellow-300">
+                    <h3 class="text-xl md:text-2xl font-semibold text-red-700 mb-4">Diamond Partner</h3>
+                    <ul class="list-disc pl-5 text-xs md:text-sm text-gray-900">
+                        <li>2 Lighted Columns in Approach Road</li>
+                        <li>Cultural Stage Backdrop LED Display</li>
+                        <li>Cultural Stage Side-wing LED Display</li>
+                        <li>Food Stall Area LED Display</li>
+                        <li>Stage Space for Product Promotion (5 min)</li>
+                        <li>One 6' x 4' Banner & One 6' x 2' Standee</li>
+                        <li>Digital Marketing via Social Media (9 months)</li>
+                        <li>Ad in Web Magazine Udbhas (twice a year)</li>
+                        <li>Full Page Souvenir Ad (1 x A4)</li>
+                        <li>One 10' x 10' Corporate Stall</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-lg shadow-lg border-t-4 border-yellow-300">
+                    <h3 class="text-xl md:text-2xl font-semibold text-red-700 mb-4">Gold Partner</h3>
+                    <ul class="list-disc pl-5 text-xs md:text-sm text-gray-900">
+                        <li>Cultural Stage Side-wing LED Display</li>
+                        <li>Food Stall Area LED Display</li>
+                        <li>Logo on Celebration Day Posters (9 months)</li>
+                        <li>One 6' x 4' Banner OR 6' x 2' Standee</li>
+                        <li>Digital Marketing via Social Media (9 months)</li>
+                        <li>Ad in Web Magazine Udbhas (twice a year)</li>
+                        <li>Full Page Souvenir Ad (1 x A4)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-6 md:mt-8 section-border py-4">
+                <h3 class="text-lg md:text-xl font-semibold text-red-700 mb-2 text-center font-philosopher">Additional Sponsorship Options</h3>
+                <ul class="list-disc pl-5 text-xs md:text-sm text-gray-900 mx-auto max-w-md">
+                    <li>3' x 3' Space for Product Promotion in Multi-Product Zone</li>
+                    <li>Branding on Event Merchandise (e.g., T-shirts, Caps)</li>
+                    <li>Logo Placement on Event Tickets and Wristbands</li>
+                    <li>Dedicated Social Media Shoutouts during the Event</li>
+                    <li>Sponsor Specific Cultural Programs (e.g., Dance, Drama, Music)</li>
+                </ul>
+            </div>
+            <div class="text-center mt-6 md:mt-8">
+                <a href="#contact" class="bg-yellow-300 text-gray-900 px-4 md:px-6 py-2 md:py-3 rounded-full font-semibold hover:bg-yellow-200 animate-pulse">Contact Us to Sponsor</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-12 md:py-16 bg-gradient-to-br from-white to-yellow-50 animate-fade-in">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-red-700 font-philosopher">Gallery & Highlights</h2>
+            <p class="text-base md:text-lg text-center mb-6 md:mb-8 text-gray-900">Relive the magic of Anandotsab 2024 with our cultural extravaganza, massive footfall, and theme-based celebrations.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="relative">
+                    <img src="images/gallery1.jpg" alt="Anandotsab 2024 Cultural Extravaganza" class="w-full h-auto object-contain rounded-lg shadow-md sindoor-border">
+                    <p class="absolute bottom-0 bg-red-700 bg-opacity-80 text-yellow-300 w-full text-center py-2 text-sm md:text-base">Cultural Extravaganza</p>
+                </div>
+                <div class="relative">
+                    <img src="images/gallery2.jpg" alt="Anandotsab 2024 Massive Footfall" class="w-full h-auto object-contain rounded-lg shadow-md sindoor-border">
+                    <p class="absolute bottom-0 bg-red-700 bg-opacity-80 text-yellow-300 w-full text-center py-2 text-sm md:text-base">Massive Footfall</p>
+                </div>
+                <div class="relative">
+                    <img src="images/gallery3.jpg" alt="Anandotsab 2024 Theme-Based Celebration" class="w-full h-auto object-contain rounded-lg shadow-md sindoor-border">
+                    <p class="absolute bottom-0 bg-red-700 bg-opacity-80 text-yellow-300 w-full text-center py-2 text-sm md:text-base">Theme-Based Celebration</p>
+                </div>
+                <div class="relative">
+                    <img src="images/gallery4.jpg" alt="Anandotsab 2024 Pandal Decoration" class="w-full h-auto object-contain rounded-lg shadow-md sindoor-border">
+                    <p class="absolute bottom-0 bg-red-700 bg-opacity-80 text-yellow-300 w-full text-center py-2 text-sm md:text-base">Pandal Decoration</p>
+                </div>
+            </div>
+            <div class="mt-6 md:mt-8">
+                <h3 class="text-xl md:text-2xl font-semibold text-center mb-6 md:mb-8 text-red-700 font-philosopher">Watch Our Highlights</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="relative">
+                        <iframe class="w-full h-40 md:h-48 rounded-lg shadow-md" src="https://www.youtube.com/embed/Vjy3sybObCY?list=TLGGVT9Jp5Tw-nEyMTA3MjAyNQ&t=4s" title="Anandotsab 2024 Highlight 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="relative">
+                        <iframe class="w-full h-40 md:h-48 rounded-lg shadow-md" src="https://www.youtube.com/embed/HxOBjE71tD4" title="Anandotsab 2024 Highlight 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="relative">
+                        <iframe class="w-full h-40 md:h-48 rounded-lg shadow-md" src="https://www.youtube.com/embed/0vLFxiBhu5Y" title="Anandotsab 2024 Highlight 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="relative">
+                        <iframe class="w-full h-40 md:h-48 rounded-lg shadow-md" src="https://www.youtube.com/embed/eKgwFNP2i7Y" title="Anandotsab 2024 Highlight 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="py-12 md:py-16 bg-gradient-to-br from-red-50 to-yellow-100 animate-fade-in">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-red-700 font-philosopher">Visit Us</h2>
+            <p class="text-base md:text-lg text-center mb-6 md:mb-8 text-gray-900">Join us at Sobha Lakeview Clubhouse, Bellandur, Bangalore, from October 8–12, 2025.</p>
+            <div class="flex justify-center">
+                <iframe class="rounded-lg shadow-md w-full max-w-lg md:max-w-2xl h-64 md:h-96" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.673650073573!2d77.66507331482178!3d12.927923990888634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae13b5c2f7d6b7%3A0x2f3f3b8f6b8f0d7e!2sSobha%20Lakeview%20Clubhouse!5e0!3m2!1sen!2sin!4v1634567890123!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 md:py-16 bg-gradient-to-br from-white to-yellow-50 animate-fade-in">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-red-700 font-philosopher">Connect, Collaborate, Celebrate</h2>
+            <div class="section-border bg-white p-4 md:p-6 rounded-lg">
+                <div class="grid grid-cols-1 gap-6">
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-semibold text-gray-900 mb-4">Contact Us</h3>
+                        <p class="text-xl md:text-2xl text-gray-900 font-semibold"><strong>Email:</strong> <a href="mailto:info@gglca.com" class="text-gray-900 hover:underline">info@gglca.com</a></p>
+                        <p class="text-xl md:text-2xl text-gray-900 font-semibold"><strong>Phone:</strong> <a href="tel:+919513333850" class="text-gray-900 hover:underline">+91 9513333850</a></p>
+                        <p class="text-xl md:text-2xl text-gray-900 font-semibold"><strong>Website:</strong> <a href="https://www.gglca.in" class="text-gray-900 hover:underline">www.gglca.in</a></p>
+                        <div class="mt-4 flex space-x-4 justify-center">
+                            <a href="https://www.facebook.com/UGGLCA" target="_blank" class="hover:opacity-80">
+                                <svg class="w-16 h-16 md:w-24 md:h-24 animate-pulse" fill="#4267B2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.91 8-4.94 8-9.95z"/></svg>
+                            </a>
+                            <a href="http://twitter.com/anandotsab" target="_blank" class="hover:opacity-80">
+                                <svg class="w-16 h-16 md:w-24 md:h-24 animate-pulse" fill="#1DA1F2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.76 0-5 2.24-5 5 0 .39.04.77.12 1.13C7.49 9.88 4.3 8.13 2.25 5.65c-.42.71-.66 1.54-.66 2.42 0 1.67.85 3.14 2.14 4-.79-.02-1.53-.24-2.18-.60v.06c0 2.33 1.66 4.27 3.86 4.71-.40.11-.82.16-1.25.16-.31 0-.61-.03-.91-.09.61 1.91 2.38 3.3 4.48 3.34-1.64 1.29-3.7 2.06-5.94 2.06-.39 0-.77-.03-1.15-.09 2.14 1.37 4.68 2.17 7.41 2.17 8.88 0 13.75-7.36 13.75-13.75 0-.21 0-.42-.01-.63.94-.68 1.76-1.53 2.41-2.5z"/></svg>
+                            </a>
+                            <a href="http://instagram.com/ggl_anandotsab" target="_blank" class="hover:opacity-80">
+                                <svg class="w-16 h-16 md:w-24 md:h-24 animate-pulse" fill="#E1306C" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.06 1.97.24 2.67.51.73.29 1.35.67 1.96 1.28s1 1.23 1.28 1.96c.27.7.45 1.5.51 2.67.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.24 1.97-.51 2.67-.29.73-.67 1.35-1.28 1.96s-1.23 1-1.96 1.28c-.7.27-1.5.45-2.67.51-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.06-1.97-.24-2.67-.51-.73-.29-1.35-.67-1.96-1.28s-1-1.23-1.28-1.96c-.27-.7-.45-1.5-.51-2.67-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.06-1.17.24-1.97.51-2.67.29-.73.67-1.35 1.28-1.96s1.23-1 1.96-1.28c.7-.27 1.5-.45 2.67-.51 1.27-.06 1.65-.07 4.85-.07m0-2.16C8.73 0 8.31.01 7.04.07c-1.28.06-2.16.26-2.93.55-.8.31-1.48.73-2.15 1.4S.87 3.76.56 4.56c-.29.77-.49 1.65-.55 2.93C0 8.76 0 9.18 0 12s.01 3.24.07 4.51c.06 1.28.26 2.16.55 2.93.31.8.73 1.48 1.4 2.15s1.35.84 2.15 1.15c.77.29 1.65.49 2.93.55 1.27.06 1.69.07 4.51.07s3.24-.01 4.51-.07c1.28-.06 2.16-.26 2.93-.55.8-.31 1.48-.73 2.15-1.4s.84-1.35 1.15-2.15c.29-.77.49-1.65.55-2.93.06-1.27.07-1.69.07-4.51s-.01-3.24-.07-4.51c-.06-1.28-.26-2.16-.55-2.93-.31-.8-.73-1.48-1.4-2.15s-1.35-.84-2.15-1.15c-.77-.29-1.65-.49-2.93-.55C15.69.01 15.27 0 12 0z"/></svg>
+                            </a>
+                            <a href="mailto:info@gglca.com" class="hover:opacity-80">
+                                <svg class="w-16 h-16 md:w-24 md:h-24 animate-pulse" fill="#facc15" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            </a>
+                        </div>
+                        <div class="mt-4 md:mt-6">
+                            <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-4">Post to Facebook</h3>
+                            <button id="togglePostForm" class="bg-yellow-300 text-gray-900 px-4 py-2 rounded-full hover:bg-yellow-200 animate-pulse text-sm md:text-base">Create Post</button>
+                            <div id="socialPostForm" class="social-post-form mt-4">
+                                <textarea id="postContent" class="w-full p-2 border rounded-lg text-gray-800 text-sm md:text-base" rows="4" placeholder="Write your post..."></textarea>
+                                <input type="file" id="postImage" class="mt-2 text-gray-800 text-sm md:text-base" accept="image/*">
+                                <button id="postToFacebook" class="bg-yellow-300 text-gray-900 px-4 py-2 rounded-full mt-2 hover:bg-yellow-200 animate-pulse text-sm md:text-base">Post to Facebook</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-red-700 text-yellow-300 py-6 md:py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm md:text-base">© 2025 Anandotsab - Green Glen Layout Cultural Association. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</html>
