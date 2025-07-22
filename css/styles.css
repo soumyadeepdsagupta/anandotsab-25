@@ -8,6 +8,9 @@ body {
 .hero-bg {
     background: linear-gradient(135deg, #dc2626, #facc15), url('../images/hero-bg.jpg') no-repeat center center;
     background-blend-mode: overlay;
+    height: 80vh; /* Increased to show larger image, 70-80% of top visible */
+    background-size: cover;
+    background-position: center top;
 }
 .social-post-form {
     display: none;

@@ -18,7 +18,7 @@ Welcome to the official website for Anandotsab '25, the 9th year of Bellandur’
 - Social media links (Facebook, Twitter, Instagram, Email)
 - Placeholder for posting to the GGLCA Facebook page (requires server-side integration)
 - Responsive design using Tailwind CSS
-- Adjusted hero section banner to be smaller, 60% transparent, and moved downward for full hero image visibility
+- Adjusted hero section with larger background image (80% height), text (h2, paragraph) moved down to show 70-80% of the top section, image position fixed
 
 ## Setup Instructions
 
@@ -81,7 +81,7 @@ Replace the following images in the `images/` folder:
   - `whoarewe.jpg`: GGLCA team or event setup (PDF page 3).
   - `peopleawards.jpg`: Award ceremony or trophy (PDF page 5).
   - `demographics.jpg`: Audience chart or crowd photo (PDF page 4).
-  - `hero-bg.jpg`: High-resolution festive image to complement the transparent banner.
+  - `hero-bg.jpg`: High-resolution festive image to complement the adjusted banner.
 - **Logo Replacement**: The GGLCA logo (`gglca-logo.png`) is replaced with "Anandotsab '25" text due to visibility issues. If a VGA logo is desired, provide the image file to replace the text.
 - **Facebook Posting**: Requires server-side integration with the Facebook Graph API for actual posting.
 - **Contact**: For sponsorship inquiries, reach out to info@gglca.com or +91 9513333850.
