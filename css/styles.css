@@ -6,11 +6,23 @@ body {
     font-family: 'Philosopher', sans-serif;
 }
 .hero-bg {
-    background: linear-gradient(135deg, #dc2626, #facc15), url('../images/hero-bg.jpg') no-repeat center center;
-    background-blend-mode: overlay;
-    height: 80vh; /* Increased to show larger image, 70-80% of top visible */
-    background-size: cover;
-    background-position: center top;
+    background: none; /* Removed gradient overlay for clarity */
+    height: 100vh; /* Full height for collage display */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+.hero-bg .grid {
+    position: relative;
+    z-index: 1;
+}
+.hero-bg img {
+    transition: opacity 0.3s ease-in-out;
+}
+.hero-bg img:hover {
+    opacity: 0.9;
 }
 .social-post-form {
     display: none;
@@ -37,7 +49,7 @@ body {
     border-image: linear-gradient(45deg, #dc2626, #facc15) 1;
 }
 .animate-fade-in {
-    animation: fadeIn 1s ease-in;
+    animation: fadeIn 0.5s ease-in-out;
 }
 .animate-pulse {
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -46,8 +58,8 @@ body {
     animation: bounce 1s ease-in-out infinite;
 }
 @keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 @keyframes pulse {
     0%, 100% { opacity: 1; }
@@ -58,6 +70,13 @@ body {
     50% { transform: translateY(-15px); }
 }
 @media (max-width: 768px) {
+    .hero-bg .grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+    }
+    .hero-bg img {
+        h-16 md:h-24;
+    }
     #nav-menu {
         display: none;
         flex-direction: column;
@@ -73,8 +92,5 @@ body {
     }
     #nav-menu li {
         margin: 0.5rem 0;
-    }
-    .hero-bg {
-        height: 80vh;
     }
 }

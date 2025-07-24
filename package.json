@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Website for Anandotsab '25 - Bellandur Durga Puja",
   "scripts": {
-    "start": "http-server -p 8080"
+    "start": "npx kill-port 8086 && http-server -p 8086"
   },
   "dependencies": {
     "http-server": "^14.1.1"
