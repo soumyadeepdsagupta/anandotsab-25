@@ -279,126 +279,316 @@
     <!-- Sponsorship Section -->
     <section id="sponsorship" class="py-12 md:py-16 bg-gradient-to-br from-red-50 to-yellow-100 animate-fade-in">
         <div class="container mx-auto px-4">
+            <!-- Uncut Full-Width Sponsor Banner (no border radius, no cropping) -->
+            <div class="w-full overflow-visible relative mb-8"></div>
+                <img src="images/sponsor1.jpg" alt="Event Banner with Sponsor Logos"
+                    class="w-full object-contain shadow-2xl animate-fade-in-slow"
+                    style="border-radius:0;max-height:unset;">
+                <!-- Animated overlay text on image -->
+                <!-- <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10">
+                    <h2 class="text-3xl md:text-5xl font-bold font-philosopher text-yellow-300 drop-shadow-lg animate-slide-down">
+                        Why Sponsor Anandotsab '25?
+                    </h2>
+                    <p class="mt-2 md:mt-4 text-lg md:text-2xl font-semibold text-white bg-red-700 bg-opacity-70 px-4 py-2 rounded-full shadow-lg animate-fade-in-up">
+                        Elevate Your Brand. Engage 30,000+ Attendees. Shine in Bangalore’s Biggest Fest!
+                    </p>
+                </div> -->
+                <style>
+                    @keyframes fade-in-slow { from { opacity: 0; } to { opacity: 1; } }
+                    .animate-fade-in-slow { animation: fade-in-slow 1.5s ease; }
+                    @keyframes slide-down { from { transform: translateY(-40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+                    .animate-slide-down { animation: slide-down 1s cubic-bezier(.4,2,.2,1); }
+                    @keyframes fade-in-up { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+                    .animate-fade-in-up { animation: fade-in-up 1.2s 0.5s cubic-bezier(.4,2,.2,1) both; }
+                </style>
+            </div>
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-red-700 font-philosopher">Sponsorship Opportunities</h2>
             <p class="text-base md:text-lg text-center mb-6 md:mb-8 text-gray-900">Partner with Anandotsab '25 to showcase your brand to over 30,000 visitors and gain unparalleled visibility!</p>
-            <div class="mb-6 md:mb-8">
-                <img src="images/sponsor1.jpg" alt="Event Banner with Sponsor Logos" class="w-full h-auto object-cover rounded-lg shadow-md sindoor-border" style="max-height:400px;">
-                <div class="section-border mt-4 px-2 md:px-6">
-                    <h3 class="text-xl md:text-2xl font-semibold text-red-700 mb-4">Why Sponsor? How do you benefit</h3>
-                    <p class="text-base md:text-lg mb-4 text-gray-900">
-                        Anandotsab '25 offers a unique platform to elevate your brand’s visibility among a diverse, engaged audience of over 30,000 attendees from Bellandur and beyond. With prominent placements on LED displays, banners, and social media campaigns, your brand will shine across our vibrant 5-day festival. Sponsorship includes exclusive stalls, stage promotions, and year-long digital marketing, ensuring maximum ROI. Join us to connect with a culturally rich community, foster goodwill, and align with a celebration that blends tradition with modern appeal.
+            <div class="mb-10 md:mb-14 relative overflow-visible"></div>
+                <!-- Animated Text Section -->
+                <div class="section-border mt-0 md:mt-6 px-2 md:px-8 py-6 md:py-8 bg-white/90 rounded-xl shadow-xl animate-fade-in-up" style="backdrop-filter: blur(2px);">
+                    <h3 class="text-2xl md:text-3xl font-bold text-red-700 mb-4 font-philosopher animate-slide-down">How Do You Benefit?</h3>
+                    <p class="text-base md:text-lg mb-6 text-gray-900 animate-fade-in-up">
+                        <span class="inline-block animate-pulse bg-yellow-200 px-2 py-1 rounded-lg font-semibold text-red-700">Anandotsab '25</span>
+                        offers a <span class="font-bold text-yellow-600">dazzling platform</span> to showcase your brand to a vibrant, diverse crowd. Enjoy <span class="font-bold text-red-700">premium placements</span> on LED displays, banners, and digital campaigns. Get exclusive stalls, stage time, and year-long digital marketing for <span class="font-bold text-green-700">maximum ROI</span>. Connect, engage, and build lasting goodwill with Bangalore’s most cosmopolitan audience!
                     </p>
-                    <ul class="list-none pl-0 mb-4">
-                        <li class="flex items-center mb-2">
-                            <span class="inline-block w-4 h-4 mr-2 bg-yellow-300 rounded-full border-2 border-red-700"></span>
-                            <span class="text-base md:text-lg text-gray-900 font-semibold">Engage with a cosmopolitan urban target audience</span>
+                    <ul class="space-y-4 md:space-y-5">
+                        <li class="flex items-center animate-bounce-slow">
+                            <span class="inline-block w-5 h-5 mr-3 bg-yellow-300 border-2 border-red-700 rounded-full shadow-lg animate-glow"></span>
+                            <span class="text-base md:text-lg text-gray-900 font-semibold">Engage with a <span class="text-red-700 font-bold">cosmopolitan urban</span> audience</span>
                         </li>
-                        <li class="flex items-center mb-2">
-                            <span class="inline-block w-4 h-4 mr-2 bg-yellow-300 rounded-full border-2 border-red-700"></span>
-                            <span class="text-base md:text-lg text-gray-900 font-semibold">Promote your brand in a premium location - the largest digital hub of Bangalore</span>
+                        <li class="flex items-center animate-bounce-slow" style="animation-delay:0.2s">
+                            <span class="inline-block w-5 h-5 mr-3 bg-yellow-300 border-2 border-red-700 rounded-full shadow-lg animate-glow"></span>
+                            <span class="text-base md:text-lg text-gray-900 font-semibold">Promote your brand in <span class="text-blue-700 font-bold">Bangalore’s largest digital hub</span></span>
                         </li>
-                        <li class="flex items-center mb-2">
-                            <span class="inline-block w-4 h-4 mr-2 bg-yellow-300 rounded-full border-2 border-red-700"></span>
-                            <span class="text-base md:text-lg text-gray-900 font-semibold">Participate in multiple events throughout the year.</span>
+                        <li class="flex items-center animate-bounce-slow" style="animation-delay:0.4s">
+                            <span class="inline-block w-5 h-5 mr-3 bg-yellow-300 border-2 border-red-700 rounded-full shadow-lg animate-glow"></span>
+                            <span class="text-base md:text-lg text-gray-900 font-semibold">Participate in <span class="text-green-700 font-bold">multiple events</span> throughout the year</span>
                         </li>
-                        <li class="flex items-center mb-2">
-                            <span class="inline-block w-4 h-4 mr-2 bg-yellow-300 rounded-full border-2 border-red-700"></span>
-                            <span class="text-base md:text-lg text-gray-900 font-semibold">Crowd interaction which helps you to further your brand.</span>
+                        <li class="flex items-center animate-bounce-slow" style="animation-delay:0.6s">
+                            <span class="inline-block w-5 h-5 mr-3 bg-yellow-300 border-2 border-red-700 rounded-full shadow-lg animate-glow"></span>
+                            <span class="text-base md:text-lg text-gray-900 font-semibold">Boost <span class="text-pink-700 font-bold">crowd interaction</span> and brand engagement</span>
                         </li>
-                        <li class="flex items-center mb-2">
-                            <span class="inline-block w-4 h-4 mr-2 bg-yellow-300 rounded-full border-2 border-red-700"></span>
-                            <span class="text-base md:text-lg text-gray-900 font-semibold">Improve brand recall by following up through dedicated social media channels & regular magazines</span>
+                        <li class="flex items-center animate-bounce-slow" style="animation-delay:0.8s">
+                            <span class="inline-block w-5 h-5 mr-3 bg-yellow-300 border-2 border-red-700 rounded-full shadow-lg animate-glow"></span>
+                            <span class="text-base md:text-lg text-gray-900 font-semibold">Improve <span class="text-yellow-700 font-bold">brand recall</span> via social media & regular magazines</span>
                         </li>
-                    </ul></ul>
+                    </ul>
+                    <style>
+                        @keyframes bounce-slow {
+                            0%, 100% { transform: translateY(0);}
+                            50% { transform: translateY(-10px);}
+                        }
+                        .animate-bounce-slow { animation: bounce-slow 2.2s infinite cubic-bezier(.4,2,.2,1); }
+                        @keyframes glow {
+                            0%, 100% { box-shadow: 0 0 10px 2px #fde047, 0 0 0 #fff; }
+                            50% { box-shadow: 0 0 24px 8px #fde047, 0 0 0 #fff; }
+                        }
+                        .animate-glow { animation: glow 1.5s infinite alternate; }
+                    </style>
                 </div>
             </div>
-            <!-- <div class="mb-8 md:mb-12">
-                <h3 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8 text-red-700 font-philosopher">Our Past Sponsors</h3>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sponsor-banner">
-                    <img src="images/sponsor-deutsche.jpg" alt="Deutsche Motoren" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
-                    <img src="images/sponsor-enamor.jpg" alt="Enamor" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
-                    <img src="images/sponsor-pchandra.jpg" alt="P. Chandra" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
-                    <img src="images/sponsor-royal.jpg" alt="Royal" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
-                    <img src="images/sponsor-ranthambore.jpg" alt="Ranthambore" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
-                    <img src="images/sponsor-idfc.jpg" alt="IDFC First Bank" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
-                    <img src="images/sponsor-ion.jpg" alt="Ion Exchange" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
-                    <img src="images/sponsor-radio.jpg" alt="Radio" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
-                    <img src="images/sponsor-gport.jpg" alt="G. Port" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
-                    <img src="images/sponsor-portico.jpg" alt="Portico Properties" class="w-full h-12 md:h-16 object-contain rounded-lg shadow-md sponsor-img animate-bounce">
-                </div>
-            </div> -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-                <div class="bg-white p-4 md:p-6 rounded-lg shadow-lg border-t-4 border-yellow-300">
-                    <h3 class="text-xl md:text-2xl font-semibold text-red-700 mb-4">Prime Partner</h3>
-                    <ul class="list-disc pl-5 text-xs md:text-sm text-gray-900">
-                        <li>Main Entrance - 2 Lighted Columns + Glow Board on Top</li>
-                        <li>Cultural Stage Backdrop LED Display</li>
-                        <li>Cultural Stage Side-wing LED Display</li>
-                        <li>Food Stall Area LED Display</li>
-                        <li>Stage Space for Product Promotion (15 min)</li>
-                        <li>Two 6' x 4' Banners & 6' x 2' Standee</li>
-                        <li>Digital Marketing via Social Media (1 year)</li>
-                        <li>Logo in Theme Song Video and Mahisasur Mardini Opera</li>
-                        <li>Souvenir Centre-spread Ad (2 x A4)</li>
-                        <li>Ad in Web Magazine Udbhas (twice a year)</li>
-                        <li>One 10' x 10' Corporate Stall</li>
-                    </ul>
-                </div>
-                <div class="bg-white p-4 md:p-6 rounded-lg shadow-lg border-t-4 border-yellow-300">
-                    <h3 class="text-xl md:text-2xl font-semibold text-red-700 mb-4">Platinum Partner</h3>
-                    <ul class="list-disc pl-5 text-xs md:text-sm text-gray-900">
-                        <li>2 Lighted Columns in Approach Road</li>
-                        <li>Cultural Stage Backdrop LED Display</li>
-                        <li>Cultural Stage Side-wing LED Display</li>
-                        <li>Lighted Glow Board atop Puja Stage</li>
-                        <li>Food Stall Area LED Display</li>
-                        <li>Stage Space for Product Promotion (10 min)</li>
-                        <li>One 6' x 4' Banner & 6' x 2' Standee</li>
-                        <li>Digital Marketing via Social Media (1 year)</li>
-                        <li>Logo in Mahisasur Mardini Opera</li>
-                        <li>Full Page Souvenir Ad (1 x A4)</li>
-                        <li>Ad in Web Magazine Udbhas (twice a year)</li>
-                        <li>One 10' x 10' Corporate Stall</li>
-                    </ul>
-                </div>
-                <div class="bg-white p-4 md:p-6 rounded-lg shadow-lg border-t-4 border-yellow-300">
-                    <h3 class="text-xl md:text-2xl font-semibold text-red-700 mb-4">Diamond Partner</h3>
-                    <ul class="list-disc pl-5 text-xs md:text-sm text-gray-900">
-                        <li>2 Lighted Columns in Approach Road</li>
-                        <li>Cultural Stage Backdrop LED Display</li>
-                        <li>Cultural Stage Side-wing LED Display</li>
-                        <li>Food Stall Area LED Display</li>
-                        <li>Stage Space for Product Promotion (5 min)</li>
-                        <li>One 6' x 4' Banner & One 6' x 2' Standee</li>
-                        <li>Digital Marketing via Social Media (9 months)</li>
-                        <li>Ad in Web Magazine Udbhas (twice a year)</li>
-                        <li>Full Page Souvenir Ad (1 x A4)</li>
-                        <li>One 10' x 10' Corporate Stall</li>
-                    </ul>
-                </div>
-                <div class="bg-white p-4 md:p-6 rounded-lg shadow-lg border-t-4 border-yellow-300">
-                    <h3 class="text-xl md:text-2xl font-semibold text-red-700 mb-4">Gold Partner</h3>
-                    <ul class="list-disc pl-5 text-xs md:text-sm text-gray-900">
-                        <li>Cultural Stage Side-wing LED Display</li>
-                        <li>Food Stall Area LED Display</li>
-                        <li>Logo on Celebration Day Posters (9 months)</li>
-                        <li>One 6' x 4' Banner OR 6' x 2' Standee</li>
-                        <li>Digital Marketing via Social Media (9 months)</li>
-                        <li>Ad in Web Magazine Udbhas (twice a year)</li>
-                        <li>Full Page Souvenir Ad (1 x A4)</li>
-                    </ul>
+
+              <!-- Sponsorship content Section -->
+           
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 md:gap-6 mb-8 justify-center">
+                <!-- Prime Partner -->
+                <button class="sponsor-btn flex flex-col items-center bg-white rounded-xl shadow-lg p-3 border-t-4 border-yellow-400 hover:scale-105 transition-transform duration-300 w-full animate-glow-yellow"
+                    data-popup="prime">
+                    <img src="images/sponsor-prime.png" alt="Prime Partner" class="w-12 h-12 md:w-16 md:h-16 object-contain mb-2" loading="lazy">
+                    <span class="font-bold text-yellow-700 text-xs md:text-sm text-center">Prime Partner</span>
+                </button>
+                <!-- Platinum Partner -->
+                <button class="sponsor-btn flex flex-col items-center bg-white rounded-xl shadow-lg p-3 border-t-4 border-blue-400 hover:scale-105 transition-transform duration-300 w-full animate-glow-blue"
+                    data-popup="platinum">
+                    <img src="images/sponsor-platinum.jpg" alt="Platinum Partner" class="w-12 h-12 md:w-16 md:h-16 object-contain mb-2" loading="lazy">
+                    <span class="font-bold text-blue-700 text-xs md:text-sm text-center">Platinum Partner</span>
+                </button>
+                <!-- Diamond Partner -->
+                <button class="sponsor-btn flex flex-col items-center bg-white rounded-xl shadow-lg p-3 border-t-4 border-green-400 hover:scale-105 transition-transform duration-300 w-full animate-glow-green"
+                    data-popup="diamond">
+                    <img src="images/sponsor-diamond.jpg" alt="Diamond Partner" class="w-12 h-12 md:w-16 md:h-16 object-contain mb-2" loading="lazy">
+                    <span class="font-bold text-green-700 text-xs md:text-sm text-center">Diamond Partner</span>
+                </button>
+                <!-- Gold Partner -->
+                <button class="sponsor-btn flex flex-col items-center bg-white rounded-xl shadow-lg p-3 border-t-4 border-orange-400 hover:scale-105 transition-transform duration-300 w-full animate-glow-orange"
+                    data-popup="gold">
+                    <img src="images/sponsor-gold.jpg" alt="Gold Partner" class="w-12 h-12 md:w-16 md:h-16 object-contain mb-2" loading="lazy">
+                    <span class="font-bold text-orange-700 text-xs md:text-sm text-center">Gold Partner</span>
+                </button>
+                <!-- Silver Partner -->
+                <button class="sponsor-btn flex flex-col items-center bg-white rounded-xl shadow-lg p-3 border-t-4 border-gray-400 hover:scale-105 transition-transform duration-300 w-full animate-glow-gray"
+                    data-popup="silver">
+                    <img src="images/sponsor-silver.jpg" alt="Silver Partner" class="w-12 h-12 md:w-16 md:h-16 object-contain mb-2" loading="lazy">
+                    <span class="font-bold text-gray-700 text-xs md:text-sm text-center">Silver Partner</span>
+                </button>
+                <!-- Branding Options -->
+                <button class="sponsor-btn flex flex-col items-center bg-white rounded-xl shadow-lg p-3 border-t-4 border-pink-400 hover:scale-105 transition-transform duration-300 w-full animate-glow-pink"
+                    data-popup="branding">
+                    <img src="images/sponsor-branding.jpg" alt="Branding Options" class="w-12 h-12 md:w-16 md:h-16 object-contain mb-2" loading="lazy">
+                    <span class="font-bold text-pink-700 text-xs md:text-sm text-center">Branding Options</span>
+                </button>
+            </div>
+            <style>
+            @media (max-width: 640px) {
+                .sponsor-btn {
+                    padding: 0.75rem !important;
+                    min-width: 0;
+                    width: 100%;
+                }
+                .sponsor-btn img {
+                    width: 2.5rem !important;
+                    height: 2.5rem !important;
+                }
+                .sponsor-btn span {
+                    font-size: 0.85rem !important;
+                }
+            }
+            @keyframes glow-yellow {
+                0%, 100% { box-shadow: 0 0 10px 2px #fde047, 0 0 0 #fff; }
+                50% { box-shadow: 0 0 24px 8px #fde047, 0 0 0 #fff; }
+            }
+            @keyframes glow-blue {
+                0%, 100% { box-shadow: 0 0 10px 2px #60a5fa, 0 0 0 #fff; }
+                50% { box-shadow: 0 0 24px 8px #60a5fa, 0 0 0 #fff; }
+            }
+            @keyframes glow-green {
+                0%, 100% { box-shadow: 0 0 10px 2px #4ade80, 0 0 0 #fff; }
+                50% { box-shadow: 0 0 24px 8px #4ade80, 0 0 0 #fff; }
+            }
+            @keyframes glow-orange {
+                0%, 100% { box-shadow: 0 0 10px 2px #fdba74, 0 0 0 #fff; }
+                50% { box-shadow: 0 0 24px 8px #fdba74, 0 0 0 #fff; }
+            }
+            @keyframes glow-gray {
+                0%, 100% { box-shadow: 0 0 10px 2px #d1d5db, 0 0 0 #fff; }
+                50% { box-shadow: 0 0 24px 8px #d1d5db, 0 0 0 #fff; }
+            }
+            @keyframes glow-pink {
+                0%, 100% { box-shadow: 0 0 10px 2px #f472b6, 0 0 0 #fff; }
+                50% { box-shadow: 0 0 24px 8px #f472b6, 0 0 0 #fff; }
+            }
+            .animate-glow-yellow { animation: glow-yellow 1.5s infinite alternate; }
+            .animate-glow-blue { animation: glow-blue 1.5s infinite alternate; }
+            .animate-glow-green { animation: glow-green 1.5s infinite alternate; }
+            .animate-glow-orange { animation: glow-orange 1.5s infinite alternate; }
+            .animate-glow-gray { animation: glow-gray 1.5s infinite alternate; }
+            .animate-glow-pink { animation: glow-pink 1.5s infinite alternate; }
+            </style>
+
+            <!-- Simple Sponsor Popup -->
+            <div id="sponsor-popup-overlay" class="fixed inset-0 bg-black bg-opacity-40 z-50 hidden flex items-center justify-center">
+                <div id="sponsor-popup-content" class="w-11/12 max-w-md bg-white rounded-xl shadow-2xl p-6 relative" style="font-family: 'Philosopher', 'Poppins', sans-serif;">
+                    <button id="close-sponsor-popup" class="absolute top-3 right-3 text-2xl font-bold hover:text-red-700" style="color:#e11d48;">&times;</button>
+                    <div id="sponsor-popup-body"></div>
                 </div>
             </div>
-            <div class="mt-6 md:mt-8 section-border py-4">
-                <h3 class="text-lg md:text-xl font-semibold text-red-700 mb-2 text-center font-philosopher">Additional Sponsorship Options</h3>
-                <ul class="list-disc pl-5 text-xs md:text-sm text-gray-900 mx-auto max-w-md">
-                    <li>3' x 3' Space for Product Promotion in Multi-Product Zone</li>
-                    <li>Branding on Event Merchandise (e.g., T-shirts, Caps)</li>
-                    <li>Logo Placement on Event Tickets and Wristbands</li>
-                    <li>Dedicated Social Media Shoutouts during the Event</li>
-                    <li>Sponsor Specific Cultural Programs (e.g., Dance, Drama, Music)</li>
-                </ul>
-            </div>
+            <script>
+            const sponsorContent = {
+                prime: {
+                    title: "Prime Partner",
+                    color: "#fde047",
+                    items: [
+                        "Main Entrance - 2 Lighted Column + Glow board on top",
+                        "Cultural Stage Backdrop LED Display",
+                        "Cultural Stage Side-wing LED Display",
+                        "Food Stall Area LED Display",
+                        "Stage Space for Product Promotion for 15 minutes",
+                        "Two 6’ x 4' Banners & 6’ x 2' Standee",
+                        "Digital Marketing via Social Media (WA/Meta/Insta) for 1 year",
+                        "Logo in Theme Song Video and Mahisasur Mardini Opera",
+                        "Souvenir Centre-spread Add – 2 x A4-size",
+                        "Advertisement in Web Magazine Udbhas (twice a year)",
+                        "One 10’ x 10’ Corporate Stall"
+                    ]
+                },
+                platinum: {
+                    title: "Platinum Partner",
+                    color: "#60a5fa",
+                    items: [
+                        "2 Lighted Columns in Approach Road",
+                        "Cultural Stage Backdrop LED Display",
+                        "Cultural Stage Side-wing LED Display",
+                        "Lighted Glow Board atop the entrance of Puja Stage",
+                        "Food Stall Area LED Display",
+                        "Stage Space for Product Promotion for 10 minutes",
+                        "One 6’ x 4' Banner & 6’ x 2' Standee",
+                        "Digital Marketing via Social Media (WA/Meta/Insta) for 1-year",
+                        "Logo in Mahisasur Mardini Opera - Animation Drama series",
+                        "Full Page Souvenir Ad– 1 x A4-size",
+                        "Advertisement in Web Magazine Udbhas (twice a year)",
+                        "One 10’ x 10’ Corporate Stall"
+                    ]
+                },
+                diamond: {
+                    title: "Diamond Partner",
+                    color: "#4ade80",
+                    items: [
+                        "2 Lighted Columns in Approach Road",
+                        "Cultural Stage Backdrop LED Display",
+                        "Cultural Stage Sidewing LED Display",
+                        "Food Stall Area LED Display",
+                        "Stage Space for Product Promotion for 5 minutes",
+                        "One 6’ x 4' Banner & One 6’ x 2' Standee",
+                        "Digital Marketing via Social Media (WA/Meta/Insta) for 1-year",
+                        "Full Page Souvenir Ad – 1 x A4-size",
+                        "Advertisement in Web Magazine Udbhas (twice a year)",
+                        "One 10’ x 10’ Corporate Stall"
+                    ]
+                },
+                gold: {
+                    title: "Gold Partner",
+                    color: "#fdba74",
+                    items: [
+                        "Cultural Stage Side wing LED Display",
+                        "Food Stall Area LED Display",
+                        "Logo Display on each Celebration day poster for 9-months",
+                        "One 6’ x 4' Banner OR 6’ x 2' Standee",
+                        "Digital Marketing via Social Media (WA/Meta/Insta) for 9 months",
+                        "Advertisement in Web Magazine Udbhas (twice a year)",
+                        "Full Page Souvenir Ad– 1 x A4-size"
+                    ]
+                },
+                silver: {
+                    title: "Silver Partner",
+                    color: "#d1d5db",
+                    items: [
+                        "3’ x 3’ space for Product Promotion on Multi Product",
+                        "Branding Wall",
+                        "Food Stall Area LED Display",
+                        "Logo Display on each Celebration day poster for 6-months",
+                        "One 6’ x 4' Banner OR 6’ x 2' Standee",
+                        "Digital Marketing via Social Media (WA/Meta/Insta) for 6-months",
+                        "Full Page Souvenir Ad– 1 x A4-size"
+                    ]
+                },
+                branding: {
+                    title: "Anantotsab ‘25 Branding Options",
+                    color: "#f472b6",
+                    items: [
+                        "6’ x 4’ Banner OR 6’ x 2’ Standee",
+                        "Social Media Promotion (WA/Meta/Insta) for One Year",
+                        "Social Media Promotion + Cultural Stage Side-wing LED Display",
+                        "Social Media Promotion + Cultural Stage Backdrop LED Display",
+                        "Branding through Mahisasur Mardini Opera – Animation Series",
+                        "Logo in Theme Song Video",
+                        "Souvenir Back Cover",
+                        "Souvenir Front Inside Cover",
+                        "Souvenir Back Inside Cover",
+                        "Souvenir Half-page Advertisement",
+                        "Souvenir Full-page Advertisement"
+                    ]
+                }
+            };
+
+            document.querySelectorAll('.sponsor-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const key = btn.getAttribute('data-popup');
+                    const data = sponsorContent[key];
+                    if (data) {
+                        const popup = document.getElementById('sponsor-popup-content');
+                        popup.style.borderTop = `6px solid ${data.color}`;
+                        document.getElementById('close-sponsor-popup').style.color = data.color;
+                        document.getElementById('sponsor-popup-body').innerHTML =
+                            `<h3 class="text-xl font-bold mb-4 text-center" style="color:${data.color}">${data.title}</h3>
+                             <ul class="list-disc pl-6 text-base text-gray-900">
+                                 ${data.items.map(item => `<li class="mb-2">${item}</li>`).join('')}
+                             </ul>`;
+                        document.getElementById('sponsor-popup-overlay').classList.remove('hidden');
+                    }
+                });
+            });
+
+            document.getElementById('close-sponsor-popup').addEventListener('click', function() {
+                document.getElementById('sponsor-popup-overlay').classList.add('hidden');
+            });
+            document.getElementById('sponsor-popup-overlay').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.add('hidden');
+                }
+            });
+            </script>
+            <style>
+            #sponsor-popup-content {
+                animation: popup-fadein 0.18s;
+            }
+            @keyframes popup-fadein {
+                from { transform: scale(0.95); opacity: 0; }
+                to { transform: scale(1); opacity: 1; }
+            }
+            @media (max-width: 640px) {
+                #sponsor-popup-content {
+                    padding: 1.25rem !important;
+                    max-width: 98vw;
+                }
+                #sponsor-popup-body h3 {
+                    font-size: 1.1rem !important;
+                }
+                #sponsor-popup-body ul {
+                    font-size: 0.98rem !important;
+                }
+            }
+            </style>
             <div class="text-center mt-6 md:mt-8">
                 <a href="#contact" class="bg-yellow-300 text-gray-900 px-4 md:px-6 py-2 md:py-3 rounded-full font-semibold hover:bg-yellow-200 animate-pulse">Contact Us to Sponsor</a>
             </div>
@@ -409,24 +599,10 @@
     <section id="gallery" class="py-12 md:py-16 bg-gradient-to-br from-white to-yellow-50 animate-fade-in">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-red-700 font-philosopher">Gallery & Highlights</h2>
-            <p class="text-base md:text-lg text-center mb-6 md:mb-8 text-gray-900">Relive the magic of Anandotsab 2024 with our cultural extravaganza, massive footfall, and theme-based celebrations.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="relative">
-                    <img src="images/gallery1.jpg" alt="Anandotsab 2024 Cultural Extravaganza" class="w-full h-auto object-contain rounded-lg shadow-md sindoor-border">
-                    <p class="absolute bottom-0 bg-red-700 bg-opacity-80 text-yellow-300 w-full text-center py-2 text-sm md:text-base">Cultural Extravaganza</p>
-                </div>
-                <div class="relative">
-                    <img src="images/gallery2.jpg" alt="Anandotsab 2024 Massive Footfall" class="w-full h-auto object-contain rounded-lg shadow-md sindoor-border">
-                    <p class="absolute bottom-0 bg-red-700 bg-opacity-80 text-yellow-300 w-full text-center py-2 text-sm md:text-base">Massive Footfall</p>
-                </div>
-                <div class="relative">
-                    <img src="images/gallery3.jpg" alt="Anandotsab 2024 Theme-Based Celebration" class="w-full h-auto object-contain rounded-lg shadow-md sindoor-border">
-                    <p class="absolute bottom-0 bg-red-700 bg-opacity-80 text-yellow-300 w-full text-center py-2 text-sm md:text-base">Theme-Based Celebration</p>
-                </div>
-                <div class="relative">
-                    <img src="images/gallery4.jpg" alt="Anandotsab 2024 Pandal Decoration" class="w-full h-auto object-contain rounded-lg shadow-md sindoor-border">
-                    <p class="absolute bottom-0 bg-red-700 bg-opacity-80 text-yellow-300 w-full text-center py-2 text-sm md:text-base">Pandal Decoration</p>
-                </div>
+            <p class="text-base md:text-lg text-center mb-6 md:mb-8 text-gray-900">Relive the magic of Anandotsab 2024 with our vibrant gallery and highlights.</p>
+            <!-- Fast Animated Gallery -->
+            <div id="galleryGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+                <!-- Images will be injected by JS -->
             </div>
             <div class="mt-6 md:mt-8">
                 <h3 class="text-xl md:text-2xl font-semibold text-center mb-6 md:mb-8 text-red-700 font-philosopher">Watch Our Highlights</h3>
@@ -438,7 +614,7 @@
                         <iframe class="w-full h-40 md:h-48 rounded-lg shadow-md" src="https://www.youtube.com/embed/HxOBjE71tD4" title="Anandotsab 2024 Highlight 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="relative">
-                        <iframe class="w-full h-64 md:h-48 rounded-lg shadow-md" src="https://www.youtube.com/embed/0vLFxiBhu5Y" title="Anandotsab 2024 Highlight 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="w-full h-40 md:h-48 rounded-lg shadow-md" src="https://www.youtube.com/embed/0vLFxiBhu5Y" title="Anandotsab 2024 Highlight 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="relative">
                         <iframe class="w-full h-40 md:h-48 rounded-lg shadow-md" src="https://www.youtube.com/embed/eKgwFNP2i7Y" title="Anandotsab 2024 Highlight 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -446,6 +622,74 @@
                 </div>
             </div>
         </div>
+        <style>
+            .gallery-animate {
+                opacity: 0;
+                transform: scale(0.92) translateY(20px);
+                transition: opacity 0.35s cubic-bezier(.4,2,.2,1), transform 0.35s cubic-bezier(.4,2,.2,1);
+            }
+            .gallery-animate.visible {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+            .gallery-img {
+                cursor: pointer;
+                transition: transform 0.18s cubic-bezier(.4,2,.2,1), box-shadow 0.18s;
+            }
+            .gallery-img:hover {
+                transform: scale(1.06) rotate(-2deg);
+                box-shadow: 0 8px 32px 0 rgba(220,38,38,0.18);
+                z-index: 2;
+            }
+            .gallery-caption {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(220,38,38,0.85);
+                color: #fde047;
+                font-weight: 600;
+                font-size: 0.95rem;
+                padding: 0.5rem 0;
+                text-align: center;
+                border-radius: 0 0 0.75rem 0.75rem;
+                opacity: 0.95;
+            }
+        </style>
+        <script>
+            // Gallery images and captions
+            const galleryImages = [
+                {src: "images/gallery1.jpg", caption: "Cultural Extravaganza"},
+                {src: "images/gallery2.jpg", caption: "Massive Footfall"},
+                {src: "images/gallery3.jpg", caption: "Theme-Based Celebration"},
+                {src: "images/gallery4.jpg", caption: "Pandal Decoration"},
+                {src: "images/gallery5.jpg", caption: "Traditional Rituals"},
+                {src: "images/gallery6.jpg", caption: "Community Bonding"},
+                {src: "images/gallery7.jpg", caption: "Family Moments"},
+                {src: "images/gallery8.jpg", caption: "Art & Craft"},
+                {src: "images/gallery9.jpg", caption: "Exhibition Stalls"},
+                {src: "images/gallery10.jpg", caption: "Food Fest"}
+            ];
+            const grid = document.getElementById('galleryGrid');
+            galleryImages.forEach((img, i) => {
+                const div = document.createElement('div');
+                div.className = "relative gallery-animate";
+                div.style.transitionDelay = (i * 60) + "ms";
+                div.innerHTML = `
+                    <img src="${img.src}" alt="${img.caption}" class="w-full h-48 md:h-56 object-cover rounded-lg shadow-md sindoor-border gallery-img" loading="lazy">
+                    <div class="gallery-caption">${img.caption}</div>
+                `;
+                grid.appendChild(div);
+            });
+            // Fast reveal animation
+            window.addEventListener('DOMContentLoaded', () => {
+                setTimeout(() => {
+                    document.querySelectorAll('.gallery-animate').forEach((el, i) => {
+                        setTimeout(() => el.classList.add('visible'), i * 60);
+                    });
+                }, 100);
+            });
+        </script>
     </section>
 
     <!-- Location Section -->
