@@ -68,21 +68,150 @@
     </nav> -->
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center text-center text-white animate-fade-in overflow-hidden">
+    <section id="home" class="relative min-h-screen flex items-center justify-center text-center text-white animate-fade-in overflow-hidden" style="background: #3a0a16;">
+        <!-- Textured Burgundy Background -->
+        <div class="absolute inset-0 z-0 pointer-events-none" style="
+            background: repeating-linear-gradient(135deg, #3a0a16 0 8px, #4b1122 8px 16px), 
+                        repeating-linear-gradient(45deg, #3a0a16 0 12px, #5a1a2c 12px 24px);
+            opacity: 0.98;
+            ">
+        </div>
         <!-- Full Background Hero Image (fills hero section, always fully visible) -->
         <img src="images/hero-bg.jpg" alt="Hero Image"
-            class="absolute inset-0 w-full h-full object-contain z-0"
+            class="absolute inset-0 w-full h-full object-contain z-10"
             style="max-width:100vw; max-height:100vh;" />
+        <!-- Crackers/Diwali Animation Canvas (left & right 10%) -->
+        <canvas id="crackers-canvas" class="absolute inset-0 w-full h-full z-20 pointer-events-none"></canvas>
         <!-- Centered Hero Content (empty for now, can add text/buttons here) -->
-        <div class="absolute inset-0 flex items-center justify-center z-20 w-full h-full pointer-events-none">
+        <div class="absolute inset-0 flex items-center justify-center z-30 w-full h-full pointer-events-none">
             <!-- Optionally add content here -->
         </div>
         <!-- Call to Action -->
-        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center justify-center">
+        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-40 flex flex-col items-center justify-center">
             <a href="#sponsorship" class="bg-yellow-300 text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-yellow-200 animate-fade-in shadow-lg" style="display:none;">Become a Sponsor</a>
         </div>
+        <script>
+        // Simple Diwali Crackers Animation (left/right/top/bottom 10% bands)
+        const canvas = document.getElementById('crackers-canvas');
+        const ctx = canvas.getContext('2d');
+        let dpr = window.devicePixelRatio || 1;
+        let W = 0, H = 0;
+        function resizeCanvas() {
+            W = canvas.offsetWidth = canvas.clientWidth = window.innerWidth;
+            H = canvas.offsetHeight = canvas.clientHeight = window.innerHeight;
+            canvas.width = W * dpr;
+            canvas.height = H * dpr;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Firework particle system
+        function randomColor() {
+            const colors = ['#ffe066','#ff3e3e','#ffb700','#fff','#fbbf24','#e11d48','#f472b6','#f59e42','#facc15','#a21caf','#38bdf8'];
+            return colors[Math.floor(Math.random()*colors.length)];
+        }
+        function randomBand() {
+            // Returns a random band: left, right, top, bottom (outer 10%)
+            const bands = ['left','right','top','bottom'];
+            return bands[Math.floor(Math.random()*bands.length)];
+        }
+        class Particle {
+            constructor(x, y, angle, speed, color) {
+                this.x = x;
+                this.y = y;
+                this.vx = Math.cos(angle) * speed;
+                this.vy = Math.sin(angle) * speed;
+                this.alpha = 1;
+                this.color = color;
+                this.size = 2 + Math.random() * 2;
+                this.life = 0;
+                this.maxLife = 30 + Math.random()*20;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vy += 0.02; // gravity
+                this.alpha -= 0.015 + Math.random()*0.01;
+                this.life++;
+            }
+            draw(ctx) {
+                ctx.save();
+                ctx.globalAlpha = Math.max(0, this.alpha);
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, 2*Math.PI);
+                ctx.fillStyle = this.color;
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = 12;
+                ctx.fill();
+                ctx.restore();
+            }
+            isAlive() {
+                return this.alpha > 0 && this.life < this.maxLife;
+            }
+        }
+        class Firework {
+            constructor(x, y) {
+                this.particles = [];
+                const n = 18 + Math.floor(Math.random()*10);
+                const color = randomColor();
+                for(let i=0;i<n;i++) {
+                    const angle = (2*Math.PI*i)/n + Math.random()*0.2;
+                    const speed = 2.2 + Math.random()*1.8;
+                    this.particles.push(new Particle(x, y, angle, speed, color));
+                }
+            }
+            update() {
+                this.particles.forEach(p=>p.update());
+                this.particles = this.particles.filter(p=>p.isAlive());
+            }
+            draw(ctx) {
+                this.particles.forEach(p=>p.draw(ctx));
+            }
+            isAlive() {
+                return this.particles.length > 0;
+            }
+        }
+        let fireworks = [];
+        function spawnFirework() {
+            // Pick a random band (left/right/top/bottom 10% of hero image area)
+            let x, y;
+            let band = randomBand();
+            // Hero image is centered with object-contain, so fireworks should be in outer 10% of canvas
+            const marginX = W * 0.1, marginY = H * 0.1;
+            if(band === 'left') {
+                x = Math.random() * marginX;
+                y = marginY + Math.random() * (H - 2*marginY);
+            } else if(band === 'right') {
+                x = W - Math.random() * marginX;
+                y = marginY + Math.random() * (H - 2*marginY);
+            } else if(band === 'top') {
+                x = marginX + Math.random() * (W - 2*marginX);
+                y = Math.random() * marginY;
+            } else { // bottom
+                x = marginX + Math.random() * (W - 2*marginX);
+                y = H - Math.random() * marginY;
+            }
+            fireworks.push(new Firework(x, y));
+        }
+        // Animation loop
+        let lastSpawn = 0;
+        function animate(ts) {
+            ctx.clearRect(0,0,W,H);
+            // Draw fireworks
+            fireworks.forEach(fw=>fw.draw(ctx));
+            fireworks.forEach(fw=>fw.update());
+            fireworks = fireworks.filter(fw=>fw.isAlive());
+            // Spawn new fireworks frequently (every 400-900ms, randomize)
+            if(!lastSpawn || ts - lastSpawn > 400 + Math.random()*500) {
+                spawnFirework();
+                lastSpawn = ts;
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+        </script>
     </section>
-    
     <!-- About Section -->
     <section id="about" class="py-12 md:py-16 bg-gradient-to-br from-white to-orange-100 animate-fade-in">
         <div class="container mx-auto px-4">
@@ -118,102 +247,102 @@
         </div>
     </section>
 
-    <!-- Demographics Section (Jazzy, Image-based, Compact) -->
-    <section id="demographics" class="py-7 md:py-10 bg-gradient-to-br from-yellow-50 to-orange-100 animate-fade-in">
-        <div class="container mx-auto px-2">
-            <h3 class="text-xl md:text-2xl font-bold text-center mb-5 md:mb-6 text-red-700 font-philosopher tracking-widest drop-shadow-lg">Demographics</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-7">
+    <!-- Demographics Section (Compact, 40% Smaller) -->
+    <section id="demographics" class="py-4 md:py-6 bg-gradient-to-br from-yellow-50 to-orange-100 animate-fade-in">
+        <div class="container mx-auto px-1">
+            <h3 class="text-base md:text-lg font-bold text-center mb-3 md:mb-4 text-red-700 font-philosopher tracking-widest drop-shadow-lg">Demographics</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 md:gap-3">
                 <!-- 1. Audience -->
-                <div class="flex flex-col items-center bg-white rounded-xl shadow-2xl p-2 border-t-6 border-yellow-300 hover:scale-105 transition-transform duration-300">
-                    <div class="relative mb-1">
-                        <img src="images/demo-audience-lowres.png" alt="Audience" class="w-14 h-14 md:w-16 md:h-16 object-cover rounded-full border-2 border-yellow-200 shadow-lg animate-bounce" loading="lazy">
-                        <span class="absolute bottom-0 right-0 bg-yellow-300 text-gray-900 font-bold px-1.5 py-0.5 rounded-full text-[0.65rem] md:text-xs shadow-md">30K+</span>
+                <div class="flex flex-col items-center bg-white rounded-lg shadow-lg p-1 border-t-4 border-yellow-300 hover:scale-105 transition-transform duration-300">
+                    <div class="relative mb-0.5">
+                        <img src="images/demo-audience-lowres.png" alt="Audience" class="w-8 h-8 md:w-10 md:h-10 object-cover rounded-full border border-yellow-200 shadow animate-bounce" loading="lazy">
+                        <span class="absolute bottom-0 right-0 bg-yellow-300 text-gray-900 font-bold px-1 py-0.5 rounded-full text-[0.55rem] md:text-xs shadow">30K+</span>
                     </div>
-                    <span class="bg-yellow-100 px-2 py-1 rounded font-semibold text-gray-900 text-center text-[0.7rem] md:text-xs mt-1 shadow">Target Audience</span>
+                    <span class="bg-yellow-100 px-1.5 py-0.5 rounded font-semibold text-gray-900 text-center text-[0.6rem] md:text-xs mt-0.5 shadow">Target Audience</span>
                 </div>
                 <!-- 2. Apartment Complexes -->
-                <div class="flex flex-col items-center bg-white rounded-xl shadow-2xl p-2 border-t-6 border-blue-300 hover:scale-105 transition-transform duration-300">
-                    <div class="relative mb-1">
-                        <img src="images/demo-apartments-lowres.png" alt="Apartments" class="w-14 h-14 md:w-16 md:h-16 object-cover rounded-full border-2 border-blue-200 shadow-lg animate-bounce" loading="lazy">
-                        <span class="absolute bottom-0 right-0 bg-blue-300 text-gray-900 font-bold px-1.5 py-0.5 rounded-full text-[0.65rem] md:text-xs shadow-md">50+</span>
+                <div class="flex flex-col items-center bg-white rounded-lg shadow-lg p-1 border-t-4 border-blue-300 hover:scale-105 transition-transform duration-300">
+                    <div class="relative mb-0.5">
+                        <img src="images/demo-apartments-lowres.png" alt="Apartments" class="w-8 h-8 md:w-10 md:h-10 object-cover rounded-full border border-blue-200 shadow animate-bounce" loading="lazy">
+                        <span class="absolute bottom-0 right-0 bg-blue-300 text-gray-900 font-bold px-1 py-0.5 rounded-full text-[0.55rem] md:text-xs shadow">50+</span>
                     </div>
-                    <span class="bg-blue-100 px-2 py-1 rounded font-semibold text-gray-900 text-center text-[0.7rem] md:text-xs mt-1 shadow">Apartment Complexes</span>
+                    <span class="bg-blue-100 px-1.5 py-0.5 rounded font-semibold text-gray-900 text-center text-[0.6rem] md:text-xs mt-0.5 shadow">Apartment Complexes</span>
                 </div>
                 <!-- 3. Tech Parks -->
-                <div class="flex flex-col items-center bg-white rounded-xl shadow-2xl p-2 border-t-6 border-green-300 hover:scale-105 transition-transform duration-300">
-                    <div class="relative mb-1">
-                        <img src="images/demo-techpark-lowres.png" alt="Tech Parks" class="w-14 h-14 md:w-16 md:h-16 object-cover rounded-full border-2 border-green-200 shadow-lg animate-bounce" loading="lazy">
-                        <span class="absolute bottom-0 right-0 bg-green-300 text-gray-900 font-bold px-1.5 py-0.5 rounded-full text-[0.65rem] md:text-xs shadow-md">20+</span>
+                <div class="flex flex-col items-center bg-white rounded-lg shadow-lg p-1 border-t-4 border-green-300 hover:scale-105 transition-transform duration-300">
+                    <div class="relative mb-0.5">
+                        <img src="images/demo-techpark-lowres.png" alt="Tech Parks" class="w-8 h-8 md:w-10 md:h-10 object-cover rounded-full border border-green-200 shadow animate-bounce" loading="lazy">
+                        <span class="absolute bottom-0 right-0 bg-green-300 text-gray-900 font-bold px-1 py-0.5 rounded-full text-[0.55rem] md:text-xs shadow">20+</span>
                     </div>
-                    <span class="bg-green-100 px-2 py-1 rounded font-semibold text-gray-900 text-center text-[0.7rem] md:text-xs mt-1 shadow">Tech Parks Nearby</span>
+                    <span class="bg-green-100 px-1.5 py-0.5 rounded font-semibold text-gray-900 text-center text-[0.6rem] md:text-xs mt-0.5 shadow">Tech Parks Nearby</span>
                 </div>
                 <!-- 4. High Net Worth Individuals -->
-                <div class="flex flex-col items-center bg-white rounded-xl shadow-2xl p-2 border-t-6 border-purple-300 hover:scale-105 transition-transform duration-300">
-                    <div class="relative mb-1">
-                        <img src="images/demo-hnwi-lowres.jpg" alt="High Net Worth" class="w-14 h-14 md:w-16 md:h-16 object-cover rounded-full border-2 border-purple-200 shadow-lg animate-bounce" loading="lazy">
-                        <span class="absolute bottom-0 right-0 bg-purple-300 text-gray-900 font-bold px-1.5 py-0.5 rounded-full text-[0.65rem] md:text-xs shadow-md">100+</span>
+                <div class="flex flex-col items-center bg-white rounded-lg shadow-lg p-1 border-t-4 border-purple-300 hover:scale-105 transition-transform duration-300">
+                    <div class="relative mb-0.5">
+                        <img src="images/demo-hnwi-lowres.jpg" alt="High Net Worth" class="w-8 h-8 md:w-10 md:h-10 object-cover rounded-full border border-purple-200 shadow animate-bounce" loading="lazy">
+                        <span class="absolute bottom-0 right-0 bg-purple-300 text-gray-900 font-bold px-1 py-0.5 rounded-full text-[0.55rem] md:text-xs shadow">100+</span>
                     </div>
-                    <span class="bg-purple-100 px-2 py-1 rounded font-semibold text-gray-900 text-center text-[0.7rem] md:text-xs mt-1 shadow">High Net Worth Individuals</span>
+                    <span class="bg-purple-100 px-1.5 py-0.5 rounded font-semibold text-gray-900 text-center text-[0.6rem] md:text-xs mt-0.5 shadow">High Net Worth Individuals</span>
                 </div>
                 <!-- 5. Coliving GenZ -->
-                <div class="flex flex-col items-center bg-white rounded-xl shadow-2xl p-2 border-t-6 border-pink-300 hover:scale-105 transition-transform duration-300">
-                    <div class="relative mb-1">
-                        <img src="images/demo-genz-lowres.png" alt="GenZ Coliving" class="w-14 h-14 md:w-16 md:h-16 object-cover rounded-full border-2 border-pink-200 shadow-lg animate-bounce" loading="lazy">
-                        <span class="absolute bottom-0 right-0 bg-pink-300 text-gray-900 font-bold px-1.5 py-0.5 rounded-full text-[0.65rem] md:text-xs shadow-md">GenZ</span>
+                <div class="flex flex-col items-center bg-white rounded-lg shadow-lg p-1 border-t-4 border-pink-300 hover:scale-105 transition-transform duration-300">
+                    <div class="relative mb-0.5">
+                        <img src="images/demo-genz-lowres.png" alt="GenZ Coliving" class="w-8 h-8 md:w-10 md:h-10 object-cover rounded-full border border-pink-200 shadow animate-bounce" loading="lazy">
+                        <span class="absolute bottom-0 right-0 bg-pink-300 text-gray-900 font-bold px-1 py-0.5 rounded-full text-[0.55rem] md:text-xs shadow">GenZ</span>
                     </div>
-                    <span class="bg-pink-100 px-2 py-1 rounded font-semibold text-gray-900 text-center text-[0.7rem] md:text-xs mt-1 shadow">Coliving Space</span>
+                    <span class="bg-pink-100 px-1.5 py-0.5 rounded font-semibold text-gray-900 text-center text-[0.6rem] md:text-xs mt-0.5 shadow">Coliving Space</span>
                 </div>
             </div>
-            <div class="mt-5 flex justify-center">
-                <span class="inline-block bg-yellow-300 text-red-700 font-bold px-4 py-2 rounded-full shadow-lg animate-pulse text-base md:text-lg tracking-wide">Bellandur's Vibrant Mix!</span>
+            <div class="mt-2 flex justify-center">
+                <span class="inline-block bg-yellow-300 text-red-700 font-bold px-2 py-1 rounded-full shadow-lg animate-pulse text-xs md:text-base tracking-wide">Bellandur's Vibrant Mix!</span>
             </div>
         </div>
     </section>
 
-    <!-- 2024 Accolades Section (Jazzy, Image-based, Compact) -->
-    <section id="accolades" class="py-7 md:py-10 bg-gradient-to-br from-white to-yellow-100 animate-fade-in">
-        <div class="container mx-auto px-2">
-            <h3 class="text-lg md:text-xl font-bold text-center mb-4 text-red-700 font-philosopher tracking-widest drop-shadow-lg">2024 Accolades</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+    <!-- 2024 Accolades Section (Compact, 40% Smaller) -->
+    <section id="accolades" class="py-3 md:py-5 bg-gradient-to-br from-white to-yellow-100 animate-fade-in">
+        <div class="container mx-auto px-1">
+            <h3 class="text-xs md:text-base font-bold text-center mb-2 text-red-700 font-philosopher tracking-widest drop-shadow-lg">2024 Accolades</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
                 <!-- 1. People’s Choice Award -->
-                <div class="flex flex-col items-center bg-white rounded-xl shadow-2xl p-2 border-t-6 border-yellow-300 hover:scale-105 transition-transform duration-300">
-                    <div class="relative mb-1">
-                        <img src="images/accolade-choice-lowres.png" alt="People’s Choice Award" class="w-12 h-12 object-cover rounded-full border-2 border-yellow-200 shadow-lg animate-bounce" loading="lazy">
-                        <span class="absolute bottom-0 right-0 bg-yellow-300 text-gray-900 font-bold px-1.5 py-0.5 rounded-full text-[0.65rem] shadow-md">Eventx</span>
+                <div class="flex flex-col items-center bg-white rounded-lg shadow-lg p-1 border-t-4 border-yellow-300 hover:scale-105 transition-transform duration-300">
+                    <div class="relative mb-0.5">
+                        <img src="images/accolade-choice-lowres.png" alt="People’s Choice Award" class="w-7 h-7 object-cover rounded-full border border-yellow-200 shadow animate-bounce" loading="lazy">
+                        <span class="absolute bottom-0 right-0 bg-yellow-300 text-gray-900 font-bold px-1 py-0.5 rounded-full text-[0.5rem] shadow">Eventx</span>
                     </div>
-                    <span class="bg-yellow-100 px-2 py-1 rounded font-semibold text-gray-900 text-center text-[0.7rem] md:text-xs mt-1 shadow">People’s Choice Award<br>Medium Durga Puja</span>
+                    <span class="bg-yellow-100 px-1 py-0.5 rounded font-semibold text-gray-900 text-center text-[0.5rem] md:text-xs mt-0.5 shadow leading-tight">People’s Choice Award<br>Medium Durga Puja</span>
                 </div>
                 <!-- 2. Best Protima -->
-                <div class="flex flex-col items-center bg-white rounded-xl shadow-2xl p-2 border-t-6 border-blue-300 hover:scale-105 transition-transform duration-300">
-                    <div class="relative mb-1">
-                        <img src="images/accolade-protima-lowres.png" alt="Best Protima Award" class="w-12 h-12 object-cover rounded-full border-2 border-blue-200 shadow-lg animate-bounce" loading="lazy">
-                        <span class="absolute bottom-0 right-0 bg-blue-300 text-gray-900 font-bold px-1.5 py-0.5 rounded-full text-[0.65rem] shadow-md">Eventx</span>
+                <div class="flex flex-col items-center bg-white rounded-lg shadow-lg p-1 border-t-4 border-blue-300 hover:scale-105 transition-transform duration-300">
+                    <div class="relative mb-0.5">
+                        <img src="images/accolade-protima-lowres.png" alt="Best Protima Award" class="w-7 h-7 object-cover rounded-full border border-blue-200 shadow animate-bounce" loading="lazy">
+                        <span class="absolute bottom-0 right-0 bg-blue-300 text-gray-900 font-bold px-1 py-0.5 rounded-full text-[0.5rem] shadow">Eventx</span>
                     </div>
-                    <span class="bg-blue-100 px-2 py-1 rounded font-semibold text-gray-900 text-center text-[0.7rem] md:text-xs mt-1 shadow">Best Protima<br>Medium Durga Puja</span>
+                    <span class="bg-blue-100 px-1 py-0.5 rounded font-semibold text-gray-900 text-center text-[0.5rem] md:text-xs mt-0.5 shadow leading-tight">Best Protima<br>Medium Durga Puja</span>
                 </div>
                 <!-- 3. Best Theme Puja -->
-                <div class="flex flex-col items-center bg-white rounded-xl shadow-2xl p-2 border-t-6 border-green-300 hover:scale-105 transition-transform duration-300">
-                    <div class="relative mb-1">
-                        <img src="images/accolade-theme-lowres.png" alt="Best Theme Puja Award" class="w-12 h-12 object-cover rounded-full border-2 border-green-200 shadow-lg animate-bounce" loading="lazy">
-                        <span class="absolute bottom-0 right-0 bg-green-300 text-gray-900 font-bold px-1.5 py-0.5 rounded-full text-[0.65rem] shadow-md">Eventx</span>
+                <div class="flex flex-col items-center bg-white rounded-lg shadow-lg p-1 border-t-4 border-green-300 hover:scale-105 transition-transform duration-300">
+                    <div class="relative mb-0.5">
+                        <img src="images/accolade-theme-lowres.png" alt="Best Theme Puja Award" class="w-7 h-7 object-cover rounded-full border border-green-200 shadow animate-bounce" loading="lazy">
+                        <span class="absolute bottom-0 right-0 bg-green-300 text-gray-900 font-bold px-1 py-0.5 rounded-full text-[0.5rem] shadow">Eventx</span>
                     </div>
-                    <span class="bg-green-100 px-2 py-1 rounded font-semibold text-gray-900 text-center text-[0.7rem] md:text-xs mt-1 shadow">Best Theme Puja<br>Medium Durga Puja</span>
+                    <span class="bg-green-100 px-1 py-0.5 rounded font-semibold text-gray-900 text-center text-[0.5rem] md:text-xs mt-0.5 shadow leading-tight">Best Theme Puja<br>Medium Durga Puja</span>
                 </div>
                 <!-- 4. Best Rituals Management -->
-                <div class="flex flex-col items-center bg-white rounded-xl shadow-2xl p-2 border-t-6 border-purple-300 hover:scale-105 transition-transform duration-300">
-                    <div class="relative mb-1">
-                        <img src="images/accolade-rituals-lowres.png" alt="Best Rituals Management Award" class="w-12 h-12 object-cover rounded-full border-2 border-purple-200 shadow-lg animate-bounce" loading="lazy">
-                        <span class="absolute bottom-0 right-0 bg-purple-300 text-gray-900 font-bold px-1.5 py-0.5 rounded-full text-[0.65rem] shadow-md">Bangiyo Samaj</span>
+                <div class="flex flex-col items-center bg-white rounded-lg shadow-lg p-1 border-t-4 border-purple-300 hover:scale-105 transition-transform duration-300">
+                    <div class="relative mb-0.5">
+                        <img src="images/accolade-rituals-lowres.png" alt="Best Rituals Management Award" class="w-7 h-7 object-cover rounded-full border border-purple-200 shadow animate-bounce" loading="lazy">
+                        <span class="absolute bottom-0 right-0 bg-purple-300 text-gray-900 font-bold px-1 py-0.5 rounded-full text-[0.5rem] shadow">Bangiyo Samaj</span>
                     </div>
-                    <span class="bg-purple-100 px-2 py-1 rounded font-semibold text-gray-900 text-center text-[0.7rem] md:text-xs mt-1 shadow">Best Rituals Management<br>Medium Durga Puja</span>
+                    <span class="bg-purple-100 px-1 py-0.5 rounded font-semibold text-gray-900 text-center text-[0.5rem] md:text-xs mt-0.5 shadow leading-tight">Best Rituals Management<br>Medium Durga Puja</span>
                 </div>
             </div>
-            <div class="mt-4 flex justify-center">
-                <span class="inline-block bg-yellow-300 text-red-700 font-bold px-3 py-1.5 rounded-full shadow-lg animate-pulse text-base tracking-wide">Recognized by Eventx & Bangiyo Samaj Bengaluru!</span>
+            <div class="mt-2 flex justify-center">
+                <span class="inline-block bg-yellow-300 text-red-700 font-bold px-2 py-1 rounded-full shadow-lg animate-pulse text-xs tracking-wide">Recognized by Eventx & Bangiyo Samaj Bengaluru!</span>
             </div>
         </div>
     </section>
-    </section>
+  
 
     <!-- Sponsorship Section -->
     <section id="sponsorship" class="py-12 md:py-16 bg-gradient-to-br from-red-50 to-yellow-100 animate-fade-in">
