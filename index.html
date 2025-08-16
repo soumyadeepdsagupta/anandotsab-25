@@ -76,21 +76,146 @@
             opacity: 0.98;
             ">
         </div>
+        <!-- Desktop Collage: Left & Right (10 images each, same order) -->
+        <div class="hidden md:block absolute inset-y-0 left-0 z-20 flex flex-col justify-center h-full pointer-events-none">
+            <div class="flex flex-col gap-4 ml-2">
+                <img src="images/collage1.jpg" alt="" class="w-32 rounded-xl shadow-lg mb-[-1.5rem] rotate-[-8deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:0ms;">
+                <img src="images/collage2.jpg" alt="" class="w-28 rounded-xl shadow-lg mb-[-1.5rem] rotate-[6deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:80ms;">
+                <img src="images/collage3.jpg" alt="" class="w-36 rounded-xl shadow-lg mb-[-1.5rem] rotate-[-4deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:160ms;">
+                <img src="images/collage4.jpg" alt="" class="w-28 rounded-xl shadow-lg mb-[-1.5rem] rotate-[7deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:240ms;">
+                <img src="images/collage5.jpg" alt="" class="w-32 rounded-xl shadow-lg mb-[-1.5rem] rotate-[-6deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:320ms;">
+                <img src="images/collage6.jpg" alt="" class="w-32 rounded-xl shadow-lg mb-[-1.5rem] rotate-[7deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:400ms;">
+                <img src="images/collage7.jpg" alt="" class="w-28 rounded-xl shadow-lg mb-[-1.5rem] rotate-[-5deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:480ms;">
+                <img src="images/collage8.jpg" alt="" class="w-36 rounded-xl shadow-lg mb-[-1.5rem] rotate-[5deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:560ms;">
+                <img src="images/collage9.jpg" alt="" class="w-28 rounded-xl shadow-lg mb-[-1.5rem] rotate-[-8deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:640ms;">
+                <img src="images/collage10.jpg" alt="" class="w-32 rounded-xl shadow-lg rotate-[6deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:720ms;">
+            </div>
+        </div>
+        <div class="hidden md:block absolute inset-y-0 right-0 z-20 flex flex-col justify-center h-full pointer-events-none">
+            <div class="flex flex-col gap-4 mr-2">
+                <img src="images/collage1.jpg" alt="" class="w-32 rounded-xl shadow-lg mb-[-1.5rem] rotate-[-8deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:0ms;">
+                <img src="images/collage2.jpg" alt="" class="w-28 rounded-xl shadow-lg mb-[-1.5rem] rotate-[6deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:80ms;">
+                <img src="images/collage3.jpg" alt="" class="w-36 rounded-xl shadow-lg mb-[-1.5rem] rotate-[-4deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:160ms;">
+                <img src="images/collage4.jpg" alt="" class="w-28 rounded-xl shadow-lg mb-[-1.5rem] rotate-[7deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:240ms;">
+                <img src="images/collage5.jpg" alt="" class="w-32 rounded-xl shadow-lg mb-[-1.5rem] rotate-[-6deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:320ms;">
+                <img src="images/collage6.jpg" alt="" class="w-32 rounded-xl shadow-lg mb-[-1.5rem] rotate-[7deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:400ms;">
+                <img src="images/collage7.jpg" alt="" class="w-28 rounded-xl shadow-lg mb-[-1.5rem] rotate-[-5deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:480ms;">
+                <img src="images/collage8.jpg" alt="" class="w-36 rounded-xl shadow-lg mb-[-1.5rem] rotate-[5deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:560ms;">
+                <img src="images/collage9.jpg" alt="" class="w-28 rounded-xl shadow-lg mb-[-1.5rem] rotate-[-8deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:640ms;">
+                <img src="images/collage10.jpg" alt="" class="w-32 rounded-xl shadow-lg rotate-[6deg] opacity-90 collage-img collage-anim" loading="lazy" style="animation-delay:720ms;">
+            </div>
+        </div>
+        <!-- Mobile Collage: Top & Bottom, no space between collage and hero image -->
+        <div class="block md:hidden absolute top-0 left-0 w-full z-20 flex justify-center gap-0 pointer-events-none collage-mobile-top">
+            <img src="images/collage1.jpg" alt="" class="w-1/5 rounded-none shadow-none rotate-[-6deg] opacity-90 collage-img-mobile collage-anim-mobile" loading="lazy" style="margin:0; border-radius:0; animation-delay:0ms;">
+            <img src="images/collage2.jpg" alt="" class="w-1/5 rounded-none shadow-none rotate-[5deg] opacity-90 collage-img-mobile collage-anim-mobile" loading="lazy" style="margin:0; border-radius:0; animation-delay:80ms;">
+            <img src="images/collage3.jpg" alt="" class="w-1/5 rounded-none shadow-none rotate-[-4deg] opacity-90 collage-img-mobile collage-anim-mobile" loading="lazy" style="margin:0; border-radius:0; animation-delay:160ms;">
+            <img src="images/collage4.jpg" alt="" class="w-1/5 rounded-none shadow-none rotate-[7deg] opacity-90 collage-img-mobile collage-anim-mobile" loading="lazy" style="margin:0; border-radius:0; animation-delay:240ms;">
+            <img src="images/collage5.jpg" alt="" class="w-1/5 rounded-none shadow-none rotate-[-6deg] opacity-90 collage-img-mobile collage-anim-mobile" loading="lazy" style="margin:0; border-radius:0; animation-delay:320ms;">
+        </div>
+        <div class="block md:hidden absolute bottom-0 left-0 w-full z-20 flex justify-center gap-0 pointer-events-none" style="margin-bottom:-6px;">
+            <img src="images/collage6.jpg" alt="" class="w-1/5 rounded-none shadow-none rotate-[7deg] opacity-90 collage-img-mobile collage-anim-mobile" loading="lazy" style="margin:0; border-radius:0; animation-delay:400ms;">
+            <img src="images/collage7.jpg" alt="" class="w-1/5 rounded-none shadow-none rotate-[-5deg] opacity-90 collage-img-mobile collage-anim-mobile" loading="lazy" style="margin:0; border-radius:0; animation-delay:480ms;">
+            <img src="images/collage8.jpg" alt="" class="w-1/5 rounded-none shadow-none rotate-[5deg] opacity-90 collage-img-mobile collage-anim-mobile" loading="lazy" style="margin:0; border-radius:0; animation-delay:560ms;">
+            <img src="images/collage9.jpg" alt="" class="w-1/5 rounded-none shadow-none rotate-[-8deg] opacity-90 collage-img-mobile collage-anim-mobile" loading="lazy" style="margin:0; border-radius:0; animation-delay:640ms;">
+            <img src="images/collage10.jpg" alt="" class="w-1/5 rounded-none shadow-none rotate-[6deg] opacity-90 collage-img-mobile collage-anim-mobile" loading="lazy" style="margin:0; border-radius:0; animation-delay:720ms;">
+        </div>
         <!-- Full Background Hero Image (fills hero section, always fully visible) -->
         <img src="images/hero-bg.jpg" alt="Hero Image"
             class="absolute inset-0 w-full h-full object-contain z-10"
             style="max-width:100vw; max-height:100vh;" />
         <!-- Crackers/Diwali Animation Canvas (left & right 10%) -->
-        <canvas id="crackers-canvas" class="absolute inset-0 w-full h-full z-20 pointer-events-none"></canvas>
+        <canvas id="crackers-canvas" class="absolute inset-0 w-full h-full z-30 pointer-events-none"></canvas>
         <!-- Centered Hero Content (empty for now, can add text/buttons here) -->
-        <div class="absolute inset-0 flex items-center justify-center z-30 w-full h-full pointer-events-none">
+        <div class="absolute inset-0 flex items-center justify-center z-40 w-full h-full pointer-events-none">
             <!-- Optionally add content here -->
         </div>
         <!-- Call to Action -->
-        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-40 flex flex-col items-center justify-center">
+        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-50 flex flex-col items-center justify-center">
             <a href="#sponsorship" class="bg-yellow-300 text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-yellow-200 animate-fade-in shadow-lg" style="display:none;">Become a Sponsor</a>
         </div>
+        <style>
+            .collage-img {
+                box-shadow: 0 4px 24px 0 rgba(220,38,38,0.18);
+                border: 2px solid #fde047;
+            }
+            @media (max-width: 767px) {
+                .collage-img-mobile {
+                    box-shadow: none !important;
+                    border: none !important;
+                    border-radius: 0 !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    width: 20vw !important;
+                    height: auto !important;
+                    min-width: 0 !important;
+                    max-width: 100% !important;
+                }
+                #home .gap-0 {
+                    gap: 0 !important;
+                }
+            }
+            /* Collage Animation for Desktop */
+            @keyframes collageFadeInUp {
+                0% { opacity: 0; transform: translateY(40px) scale(0.92);}
+                80% { opacity: 1; transform: translateY(-6px) scale(1.03);}
+                100% { opacity: 1; transform: translateY(0) scale(1);}
+            }
+            .collage-anim {
+                opacity: 0;
+                animation: collageFadeInUp 0.7s cubic-bezier(.4,2,.2,1) forwards;
+            }
+            /* Collage Animation for Mobile */
+            @keyframes collageFadeInMobile {
+                0% { opacity: 0; transform: scale(0.92) translateY(-20px);}
+                80% { opacity: 1; transform: scale(1.04) translateY(4px);}
+                100% { opacity: 1; transform: scale(1) translateY(0);}
+            }
+            .collage-anim-mobile {
+                opacity: 0;
+                animation: collageFadeInMobile 0.7s cubic-bezier(.4,2,.2,1) forwards;
+            }
+            /* Subtle floating animation for collage images */
+            @keyframes collageFloat {
+                0% { transform: translateY(0) scale(1) rotate(var(--collage-rot,0deg)); }
+                50% { transform: translateY(-12px) scale(1.03) rotate(var(--collage-rot,0deg)); }
+                100% { transform: translateY(0) scale(1) rotate(var(--collage-rot,0deg)); }
+            }
+            .collage-float {
+                animation: collageFloat 3.2s ease-in-out infinite;
+            }
+            /* Mobile floating */
+            @keyframes collageFloatMobile {
+                0% { transform: scale(1) translateY(0) rotate(var(--collage-rot,0deg)); }
+                50% { transform: scale(1.03) translateY(-8px) rotate(var(--collage-rot,0deg)); }
+                100% { transform: scale(1) translateY(0) rotate(var(--collage-rot,0deg)); }
+            }
+            .collage-float-mobile {
+                animation: collageFloatMobile 2.7s ease-in-out infinite;
+            }
+        </style>
         <script>
+        // Animate collage images on load (desktop and mobile)
+        window.addEventListener('DOMContentLoaded', function() {
+            // Desktop
+            document.querySelectorAll('.collage-anim').forEach(function(img, i) {
+                setTimeout(() => {
+                    img.style.opacity = 1;
+                    img.classList.add('collage-float');
+                    // Set a custom property for rotation so float doesn't override rotate
+                    img.style.setProperty('--collage-rot', img.style.transform?.match(/rotate\(([^)]+)\)/)?.[1] || '0deg');
+                }, 50 + i * 60);
+            });
+            // Mobile
+            document.querySelectorAll('.collage-anim-mobile').forEach(function(img, i) {
+                setTimeout(() => {
+                    img.style.opacity = 1;
+                    img.classList.add('collage-float-mobile');
+                    img.style.setProperty('--collage-rot', img.style.transform?.match(/rotate\(([^)]+)\)/)?.[1] || '0deg');
+                }, 50 + i * 60);
+            });
+        });
+
         // Simple Diwali Crackers Animation (left/right/top/bottom 10% bands)
         const canvas = document.getElementById('crackers-canvas');
         const ctx = canvas.getContext('2d');
